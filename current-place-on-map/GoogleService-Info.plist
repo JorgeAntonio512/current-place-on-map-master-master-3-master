@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>47625900810-959iqnbsjetpf74q2tefs67j9h0hll4b.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.47625900810-959iqnbsjetpf74q2tefs67j9h0hll4b</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCze_Edpq1XE1p1jsLknyOhv32TRf7jIeI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>47625900810</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.george.austintallclub</string>
+	<key>PROJECT_ID</key>
+	<string>austintallcommunity-186200</string>
+	<key>STORAGE_BUCKET</key>
+	<string>austintallcommunity-186200.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:47625900810:ios:977aad4d563281f6</string>
+	<key>DATABASE_URL</key>
+	<string>https://austintallcommunity-186200.firebaseio.com</string>
+</dict>
+</plist>
