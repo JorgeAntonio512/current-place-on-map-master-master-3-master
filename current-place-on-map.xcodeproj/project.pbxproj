@@ -40,10 +40,8 @@
 		3D81376720A7A57A005EF841 /* MapkitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D81376620A7A57A005EF841 /* MapkitViewController.swift */; };
 		3D81376920A7AD39005EF841 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D81376820A7AD39005EF841 /* Artwork.swift */; };
 		3D89A17D200D7C6C009AF9C5 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D89A17C200D7C6C009AF9C5 /* ChatVC.swift */; };
-		3DA0347E20AE106F00F72092 /* NewsfeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA0347D20AE106F00F72092 /* NewsfeedTableViewController.swift */; };
 		3DA6996A1FEC38A900E8BDD7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA699691FEC38A900E8BDD7 /* SearchViewController.swift */; };
 		3DC8CCA620C9DF7B00361C93 /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC8CCA520C9DF7B00361C93 /* DonateViewController.swift */; };
-		3DCD51342055C84700C13A2D /* NewsfeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCD51332055C84700C13A2D /* NewsfeedViewController.swift */; };
 		3DCD51362055C9EA00C13A2D /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCD51352055C9EA00C13A2D /* CreatePostViewController.swift */; };
 		3DD032FE200E3D26008B5887 /* NavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD032FD200E3D26008B5887 /* NavVC.swift */; };
 		3DD03304200E4DA8008B5887 /* VCCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD03303200E4DA8008B5887 /* VCCells.swift */; };
@@ -106,10 +104,8 @@
 		3D81376620A7A57A005EF841 /* MapkitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapkitViewController.swift; sourceTree = "<group>"; };
 		3D81376820A7AD39005EF841 /* Artwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 		3D89A17C200D7C6C009AF9C5 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
-		3DA0347D20AE106F00F72092 /* NewsfeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedTableViewController.swift; sourceTree = "<group>"; };
 		3DA699691FEC38A900E8BDD7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3DC8CCA520C9DF7B00361C93 /* DonateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateViewController.swift; sourceTree = "<group>"; };
-		3DCD51332055C84700C13A2D /* NewsfeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedViewController.swift; sourceTree = "<group>"; };
 		3DCD51352055C9EA00C13A2D /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		3DD032FD200E3D26008B5887 /* NavVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavVC.swift; sourceTree = "<group>"; };
 		3DD03303200E4DA8008B5887 /* VCCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCCells.swift; sourceTree = "<group>"; };
@@ -277,8 +273,6 @@
 				3D81376820A7AD39005EF841 /* Artwork.swift */,
 				3D4F69FE20AA54B1005F442B /* ArtworkViews.swift */,
 				3DCD51352055C9EA00C13A2D /* CreatePostViewController.swift */,
-				3DCD51332055C84700C13A2D /* NewsfeedViewController.swift */,
-				3DA0347D20AE106F00F72092 /* NewsfeedTableViewController.swift */,
 				3D708F0B20C2BFEA005F0A04 /* PostImageCell.swift */,
 				3D11F79120C353E8006D4702 /* NewNewsfeedViewController.swift */,
 				3DC8CCA520C9DF7B00361C93 /* DonateViewController.swift */,
@@ -523,7 +517,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DCD51342055C84700C13A2D /* NewsfeedViewController.swift in Sources */,
 				3D29170E1FFF17AC00862BAB /* ProfileTableViewController.swift in Sources */,
 				3D3232832001800F008C6475 /* ProfileEditViewController.swift in Sources */,
 				3D71AB7F206EAE3400A7202D /* EnableLocationSharingViewController.swift in Sources */,
@@ -539,7 +532,6 @@
 				3D2D21081FC0F275009370B4 /* MeetupSuggestionsViewController.swift in Sources */,
 				3D81376920A7AD39005EF841 /* Artwork.swift in Sources */,
 				3D26BB68206B0C7900F5C711 /* ProfileTabViewController.swift in Sources */,
-				3DA0347E20AE106F00F72092 /* NewsfeedTableViewController.swift in Sources */,
 				3DD032FE200E3D26008B5887 /* NavVC.swift in Sources */,
 				3D51D52B206AEE22004C357C /* TabBarMainMenuController.swift in Sources */,
 				3D15C1E9200D81F700C09794 /* Helper Files.swift in Sources */,
