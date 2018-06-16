@@ -223,7 +223,7 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 cell.profilePic.layer.borderColor = GlobalVariables.blue.cgColor
                 cell.messageLabel.textColor = GlobalVariables.purple
             }
-           
+           self.alert.dismiss(animated: false, completion: nil)
             return cell
             
         }
@@ -262,7 +262,9 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         self.customization()
         
         
-        self.fetchData()
+        
+        
+        
        
         
         
@@ -275,16 +277,52 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             self.tableView.deselectRow(at: selectionIndexPath, animated: animated)
             
             
-            
+           
             
             
         }
+        let current = UNUserNotificationCenter.current()
+        
+        current.getNotificationSettings(completionHandler: { (settings) in
+            if settings.authorizationStatus == .notDetermined {
+                // Notification permission has not been asked yet, go for it!
+                print ("FIND OUT!!")
+                
+                DispatchQueue.main.async() {
+                    self.performSegue(withIdentifier: "toNotificationPerm", sender: self)
+                }
+            }
+            
+            if settings.authorizationStatus == .denied {
+                // Notification permission was previously denied, go to settings & privacy to re-enable
+                DispatchQueue.main.async(execute: {
+                    print ("mother fucker")
+                    self.performSegue(withIdentifier: "toOpenNotificationz", sender: self)
+                })
+            }
+            
+            if settings.authorizationStatus == .authorized {
+                // Notification permission was already granted
+                DispatchQueue.main.async(execute: {
+                    print ("chyea boi!!")
+                    self.fetchData()
+                })
+            }
+        })
         //self.showEmailAlert()
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
+        //testForNotifications()
+        
+        
+    }
+    
+    func testForNotifications() {
         let current = UNUserNotificationCenter.current()
         
         current.getNotificationSettings(completionHandler: { (settings) in
@@ -312,9 +350,6 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 })
             }
         })
-        
-        
-        
     }
 }
 
