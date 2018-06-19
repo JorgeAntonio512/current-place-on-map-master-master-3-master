@@ -48,6 +48,17 @@ class NotificationsPermissionsViewController: UIViewController {
             // Enable or disable features based on authorization.
             if granted {
                 DispatchQueue.main.async {
+                    if let refreshedToken = InstanceID.instanceID().token() {
+                        print("InstanceID token: \(refreshedToken)")
+                    
+                                let FirebaseMessageRef = Database.database().reference().child("tokens").childByAutoId()
+                                //save the message in Firebase
+                                FirebaseMessageRef.updateChildValues(["/token/": refreshedToken])
+                                //FirebaseMessageRef.updateChildValues(["/profilePics/": profilePics])
+                            
+                        
+                        
+                    }
                     // Update UI
                     self.navigationController?.popViewController(animated: true)
                 }

@@ -80,8 +80,6 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     //Downloads conversations
     func fetchData() {
         
-        self.loadingIndicator.startAnimating();
-        
         self.alert.view.addSubview(self.loadingIndicator)
         self.present(self.alert, animated: true, completion: nil)
         
@@ -98,9 +96,11 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 }
             }
            
+            
         }
         
-        
+        self.alert.dismiss(animated: false, completion: nil)
+        self.loadingIndicator.stopAnimating()
         
     }
     
@@ -272,6 +272,10 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.loadingIndicator.startAnimating();
+        
+        
+        
         
         if let selectionIndexPath = self.tableView.indexPathForSelectedRow {
             self.tableView.deselectRow(at: selectionIndexPath, animated: animated)

@@ -17,6 +17,7 @@ import Firebase
 class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var nameLabele: UILabel!
     @IBOutlet weak var imagePreview: UIImageView!
     var profilePic:String?
     var usersArray = [ [String: Any] ]()
@@ -94,6 +95,10 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
             print("KEYCHAIN USER id: \(FirebaseUid!)")
             //set up firebase references:
             let FirebaseMessageRefAbout = Database.database().reference().child("posts")
+            
+           
+            
+            
             
             let FirebaseMessageRef6 = Database.database().reference().child("users/\(FirebaseUid!)/profileImageURL")
             // get a reference to our file store
@@ -194,9 +199,18 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
         //        })
         
         
-        
-        
-        
+        let keyChain = DataService().keyChain
+        if keyChain.get("uid") != nil {
+            let FirebaseUid = keyChain.get("uid")
+        let FirebaseNameRef = Database.database().reference().child("users/\(FirebaseUid!)/name")
+        FirebaseNameRef.observe(.value) { (snap: DataSnapshot) in
+            cell.nameLabele.text = (snap.value as AnyObject).description
+            
+            
+            
+            
+            
+            }}
         
         if userDict["posts"] as? String == "none" {
             cell.postText.text = nil
