@@ -56,36 +56,7 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
             
         }
         
-        let ref = Database.database().reference().child("posts")
         
-        ref.observeSingleEvent(of: .value, with: { snapshot in
-            
-            if ( snapshot.value is NSNull ) {
-                print("not found")
-            } else {
-                
-                
-                
-                for child in (snapshot.children) {
-                    
-                    let snap = child as! DataSnapshot //each child is a snapshot
-                    
-                    let dict = snap.value as? [String:AnyObject] // the value is a dict
-                    
-                    //let name = dict!["posts"] as? String
-                    //let food = dict!["height"] as? String
-                    let key = snap.key
-                    print(key)
-                    //print("\(name) loves \(food)")
-                    self.usersArray.append(dict!)
-                    print(self.usersArray)
-                    //self.postsName.text = dict!["posts"] as? String
-                    //self.keyArray.append(key)
-                }
-                self.tableView.reloadData()
-            }
-            
-        })
         
         
         //Print user id from (User's device local storage):
@@ -131,7 +102,8 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidAppear(_ animated: Bool) {
         
-        
+        usersArray.removeAll()
+        updatePosts()
      
         
     }
@@ -264,7 +236,38 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
         
     }
     
-    
+    func updatePosts() {
+        let ref = Database.database().reference().child("posts")
+        
+        ref.observeSingleEvent(of: .value, with: { snapshot in
+            
+            if ( snapshot.value is NSNull ) {
+                print("not found")
+            } else {
+                
+                
+                
+                for child in (snapshot.children) {
+                    
+                    let snap = child as! DataSnapshot //each child is a snapshot
+                    
+                    let dict = snap.value as? [String:AnyObject] // the value is a dict
+                    
+                    //let name = dict!["posts"] as? String
+                    //let food = dict!["height"] as? String
+                    let key = snap.key
+                    print(key)
+                    //print("\(name) loves \(food)")
+                    self.usersArray.append(dict!)
+                    print(self.usersArray)
+                    //self.postsName.text = dict!["posts"] as? String
+                    //self.keyArray.append(key)
+                }
+                self.tableView.reloadData()
+            }
+            
+        })
+    }
     
     @IBAction func AddImageButton(_ sender: Any) {
         
