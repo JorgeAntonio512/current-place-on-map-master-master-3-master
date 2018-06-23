@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Firebase
+import DateTools
 
 
 
@@ -201,6 +202,10 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
         dateFormatter.locale = NSLocale.current
         dateFormatter.dateFormat = "h:mm a, EEEE, MMM d, yyyy" //Specify your format that you want
         let timeString = "\(dateFormatter.string(from: NSDate(timeIntervalSince1970: userDict["timestamp"] as! TimeInterval) as Date))"
+        
+        NSDate(timeIntervalSince1970: userDict["timestamp"] as! TimeInterval).timeAgoSinceNow()
+        
+        var timeStr = String(timeString) as NSString
     cell.dateTime.text = String(timeString)
         
         if userDict["posts"] as? String == "none" {

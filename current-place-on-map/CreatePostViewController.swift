@@ -84,11 +84,12 @@ class CreatePostViewController: UIViewController {
         } else {
             self.writeAboutInFirebase(about: self.post.text!, profilePics: profilePics!, namey: self.Namename.text!)
          
-        let alertController = UIAlertController(title: "Your post has been shared!", message:
-            "Please press the \"Back\" button!", preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-        
-        self.present(alertController, animated: true, completion: nil)
+            navigationController?.popViewController(animated: true)
+//        let alertController = UIAlertController(title: "Your post has been shared!", message:
+//            "Please press the \"Back\" button!", preferredStyle: UIAlertControllerStyle.alert)
+//        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+//        
+//        self.present(alertController, animated: true, completion: nil)
         }
     }
     

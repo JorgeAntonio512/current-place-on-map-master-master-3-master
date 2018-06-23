@@ -402,11 +402,13 @@ class ProfileEditViewController: UITableViewController {
                                     
                                         self.dismiss(animated: false, completion: nil)
                                         loadingIndicator.stopAnimating()
-                                    let alertController = UIAlertController(title: "Your data has been saved!", message:
-                                        "Please press the Profile (back) button!", preferredStyle: UIAlertControllerStyle.alert)
-                                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-                                    
-                                    self.present(alertController, animated: true, completion: nil)
+                                        
+                                        self.navigationController?.popViewController(animated: true)
+//                                    let alertController = UIAlertController(title: "Your data has been saved!", message:
+//                                        "Please press the Profile (back) button!", preferredStyle: UIAlertControllerStyle.alert)
+//                                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+//
+//                                    self.present(alertController, animated: true, completion: nil)
                                     
                                     
                                     

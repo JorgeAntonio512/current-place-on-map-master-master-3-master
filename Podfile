@@ -30,6 +30,7 @@ target 'current-place-on-map' do
   pod 'KMPlaceholderTextView', '~> 1.3.0'
   pod 'NVActivityIndicatorView'
   pod 'TipJarViewController'
+  pod 'DateToolsSwift'
   
   # ignore all warnings from all pods
   inhibit_all_warnings!

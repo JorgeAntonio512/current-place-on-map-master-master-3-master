@@ -8,6 +8,7 @@ PODS:
   - Crashlytics (3.10.2):
     - Fabric (~> 1.7.7)
   - DateTools (2.0.0)
+  - DateToolsSwift (4.0.0)
   - Fabric (1.7.7)
   - FacebookCore (0.3.0):
     - Bolts (~> 1.8)
@@ -119,6 +120,7 @@ DEPENDENCIES:
   - Bolts
   - Crashlytics
   - DateTools
+  - DateToolsSwift
   - Fabric
   - FacebookCore
   - FacebookLogin
@@ -149,6 +151,7 @@ SPEC REPOS:
     - Bolts
     - Crashlytics
     - DateTools
+    - DateToolsSwift
     - Fabric
     - FacebookCore
     - FacebookLogin
@@ -199,6 +202,7 @@ SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Crashlytics: 0360624eea1c978a743feddb2fb1ef8b37fb7a0d
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
+  DateToolsSwift: 875d97ff9e3a5d54abdd67a269b3f51c757b71ab
   Fabric: bda89e242bce1b7b8ab264248cf3407774ce0095
   FacebookCore: 3ffa190a3f1f96cec0e44d3fc221bc322c595ffa
   FacebookLogin: 0af839ea858faef99550d16596b87b4a8e8906e6
@@ -236,6 +240,6 @@ SPEC CHECKSUMS:
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
   TipJarViewController: fa08321344b0989304817ffe26a00b13291fc65e
 
-PODFILE CHECKSUM: 3816f36ecb973b4a4b65d8901550e41e9bb47cfe
+PODFILE CHECKSUM: b5d9901f2523443ce5db055354d33b7bcdbc73fd
 
 COCOAPODS: 1.5.2
