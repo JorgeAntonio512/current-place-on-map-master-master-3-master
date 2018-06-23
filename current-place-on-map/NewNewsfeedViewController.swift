@@ -174,15 +174,17 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
         let keyChain = DataService().keyChain
         if keyChain.get("uid") != nil {
             let FirebaseUid = keyChain.get("uid")
-        let FirebaseNameRef = Database.database().reference().child("users/\(FirebaseUid!)/name")
-        FirebaseNameRef.observe(.value) { (snap: DataSnapshot) in
-            cell.nameLabele.text = (snap.value as AnyObject).description
+        //let FirebaseNameRef = Database.database().reference().child("users/\(FirebaseUid!)/name")
+       // let FirebaseNameRef = Database.database().reference().child("posts").childByAutoId().child("name")
+        //FirebaseNameRef.observe(.value) { (snap: DataSnapshot) in
             
             
             
             
             
-            }}
+            }
+    cell.nameLabele.text = userDict["name"] as? String
+    
         
         if userDict["posts"] as? String == "none" {
             cell.postText.text = nil

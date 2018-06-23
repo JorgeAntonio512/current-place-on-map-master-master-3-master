@@ -17,6 +17,7 @@ class CreatePostViewController: UIViewController {
     @IBOutlet weak var Namename: UITextView!
     
     var profilePics:String?
+    var namey:String?
     
     override func viewDidAppear(_ animated: Bool) {
         let keyChain = DataService().keyChain
@@ -57,7 +58,7 @@ class CreatePostViewController: UIViewController {
                 }}
         }}
     
-    func writeAboutInFirebase(about: String, profilePics: String) {
+    func writeAboutInFirebase(about: String, profilePics: String, namey: String) {
         //Select the correct user
         let keyChain = DataService().keyChain
         if keyChain.get("uid") != nil {
@@ -65,7 +66,7 @@ class CreatePostViewController: UIViewController {
             //set up firebase references:
             let FirebaseMessageRef = Database.database().reference().child("posts").childByAutoId()
             //save the message in Firebase
-            FirebaseMessageRef.updateChildValues(["/posts/": about, "/postPics/": "none", "/profilePics/": profilePics])
+            FirebaseMessageRef.updateChildValues(["/posts/": about, "/postPics/": "none", "/profilePics/": profilePics, "/name/": namey])
             //FirebaseMessageRef.updateChildValues(["/profilePics/": profilePics])
         }
     }
@@ -80,7 +81,7 @@ class CreatePostViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
             
         } else {
-            self.writeAboutInFirebase(about: self.post.text!, profilePics: profilePics!)
+            self.writeAboutInFirebase(about: self.post.text!, profilePics: profilePics!, namey: self.Namename.text!)
             
         let alertController = UIAlertController(title: "Your post has been shared!", message:
             "Please press the \"Back\" button!", preferredStyle: UIAlertControllerStyle.alert)
