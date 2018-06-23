@@ -17,6 +17,7 @@ import Firebase
 class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var dateTime: UILabel!
     @IBOutlet weak var nameLabele: UILabel!
     @IBOutlet weak var imagePreview: UIImageView!
     var profilePic:String?
@@ -26,6 +27,7 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
     var postPics:String?
     var posts:String?
     var profilePics:String?
+    var nameyname:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +70,15 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
             let FirebaseMessageRefAbout = Database.database().reference().child("posts")
             
            
+            //let uid = FirebaseUid
             
+            let FirebaseMessageRefName = Database.database().reference().child("users/\(FirebaseUid!)/name")
+            FirebaseMessageRefName.observe(.value) { (snap: DataSnapshot) in
+                self.nameyname = (snap.value as AnyObject).description
+                
+                print(self.nameyname! + "hell no it works!")
+                //self.Namename.text = profileName
+            }
             
             
             let FirebaseMessageRef6 = Database.database().reference().child("users/\(FirebaseUid!)/profileImageURL")
@@ -184,7 +194,12 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
             
             }
     cell.nameLabele.text = userDict["name"] as? String
-    
+        
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .medium
+        let timeString = "\(dateFormatter.string(from: NSDate(timeIntervalSince1970: userDict["timestamp"] as! TimeInterval) as Date))"
+    cell.dateTime.text = String(timeString)
         
         if userDict["posts"] as? String == "none" {
             cell.postText.text = nil
@@ -370,14 +385,15 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
             print("KEYCHAIN USER id: \(FirebaseUid!)")
             
             
-            let uid = FirebaseUid
+           
             
             let ref = Database.database().reference()
             let userReference = ref.child("posts").childByAutoId()
             //let newUserReference = userReference.child(uid!)
             //let FirebaseMessageRef = Database.database().reference().child("posts").childByAutoId()
             //save the message in Firebase
-            userReference.updateChildValues(["/postPics/": profileImageURL, "/posts/": "none", "/profilePics/": profilePic])
+            let interval = NSDate().timeIntervalSince1970
+            userReference.updateChildValues(["/postPics/": profileImageURL, "/posts/": "none", "/profilePics/": profilePic, "/name/": nameyname as Any, "/timestamp/": interval])
             //userReference.updateChildValues(["posts": profileImageURL])
         }
         

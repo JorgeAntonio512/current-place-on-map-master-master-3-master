@@ -762,10 +762,18 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzi-Jo-Cdg">
+                                                    <rect key="frame" x="20" y="60" width="127" height="39"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="bioLabel" destination="DKk-M8-HGL" id="GSf-lJ-SfV"/>
+                                            <outlet property="dateTime" destination="Nzi-Jo-Cdg" id="Bul-eT-D0G"/>
                                             <outlet property="nameLabel" destination="QS3-9h-1Py" id="lOw-Gs-W7p"/>
                                             <outlet property="nameLabele" destination="QS3-9h-1Py" id="jB3-Fy-Oew"/>
                                             <outlet property="postImageView" destination="Ujg-Dg-alP" id="2lW-pk-Yhu"/>

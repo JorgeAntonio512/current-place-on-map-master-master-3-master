@@ -66,7 +66,8 @@ class CreatePostViewController: UIViewController {
             //set up firebase references:
             let FirebaseMessageRef = Database.database().reference().child("posts").childByAutoId()
             //save the message in Firebase
-            FirebaseMessageRef.updateChildValues(["/posts/": about, "/postPics/": "none", "/profilePics/": profilePics, "/name/": namey])
+            let interval = NSDate().timeIntervalSince1970
+            FirebaseMessageRef.updateChildValues(["/posts/": about, "/postPics/": "none", "/profilePics/": profilePics, "/name/": namey, "/timestamp/": interval])
             //FirebaseMessageRef.updateChildValues(["/profilePics/": profilePics])
         }
     }
@@ -82,7 +83,7 @@ class CreatePostViewController: UIViewController {
             
         } else {
             self.writeAboutInFirebase(about: self.post.text!, profilePics: profilePics!, namey: self.Namename.text!)
-            
+         
         let alertController = UIAlertController(title: "Your post has been shared!", message:
             "Please press the \"Back\" button!", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))

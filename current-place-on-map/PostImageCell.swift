@@ -15,6 +15,7 @@ class PostImageCell: UITableViewCell {
     @IBOutlet weak var bioLabel: UILabel!
     @IBOutlet weak var postImageView: UIImageView!
     
+    @IBOutlet weak var dateTime: UILabel!
     @IBOutlet weak var nameLabele: UILabel!
     @IBOutlet weak var postText: UITextView!
     override func awakeFromNib() {
