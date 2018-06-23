@@ -258,6 +258,7 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
     func updatePosts() {
         let ref = Database.database().reference().child("posts")
         
+        
         ref.observeSingleEvent(of: .value, with: { snapshot in
             
             if ( snapshot.value is NSNull ) {
@@ -277,7 +278,8 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
                     let key = snap.key
                     print(key)
                     //print("\(name) loves \(food)")
-                    self.usersArray.append(dict!)
+                    //self.usersArray.append(dict!)
+                    self.usersArray.insert(dict!, at: 0)
                     print(self.usersArray)
                     //self.postsName.text = dict!["posts"] as? String
                     //self.keyArray.append(key)
