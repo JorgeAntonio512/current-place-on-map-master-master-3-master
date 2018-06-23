@@ -40,7 +40,7 @@ class PostImageCell: UITableViewCell {
         self.postImageView.layer.borderWidth = 1.0
         self.postImageView.layer.masksToBounds = true
         self.postImageView.layer.borderColor = UIColor.white.cgColor
-        self.postImageView.frame = CGRect(x: 150, y: 20, width: 100, height: 100)
+        self.postImageView.frame = CGRect(x: 200, y: 20, width: 100, height: 100)
         self.postImageView.layer.cornerRadius = 25
         self.postImageView.clipsToBounds = true
     }

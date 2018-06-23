@@ -197,7 +197,9 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
         
         
         let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .medium
+        dateFormatter.timeZone = TimeZone(abbreviation: "CST") //Set timezone that you want
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "h:mm a, EEEE, MMM d, yyyy" //Specify your format that you want
         let timeString = "\(dateFormatter.string(from: NSDate(timeIntervalSince1970: userDict["timestamp"] as! TimeInterval) as Date))"
     cell.dateTime.text = String(timeString)
         
