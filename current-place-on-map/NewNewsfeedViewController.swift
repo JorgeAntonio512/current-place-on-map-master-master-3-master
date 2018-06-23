@@ -28,6 +28,7 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
     var postPics:String?
     var posts:String?
     var profilePics:String?
+    var timestampzz:TimeInterval?
     var nameyname:String?
     
     override func viewDidLoad() {
@@ -120,6 +121,7 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.usersArray.count
     }
@@ -201,12 +203,12 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
         dateFormatter.timeZone = TimeZone(abbreviation: "CST") //Set timezone that you want
         dateFormatter.locale = NSLocale.current
         dateFormatter.dateFormat = "h:mm a, EEEE, MMM d, yyyy" //Specify your format that you want
-        let timeString = "\(dateFormatter.string(from: NSDate(timeIntervalSince1970: userDict["timestamp"] as! TimeInterval) as Date))"
+        //let timeString = "\(dateFormatter.string(from: NSDate(timeIntervalSince1970: userDict["timestamp"] as! TimeInterval) as Date))"
         
-        NSDate(timeIntervalSince1970: userDict["timestamp"] as! TimeInterval).timeAgoSinceNow()
+        let timeString = (NSDate(timeIntervalSince1970: userDict["timestamp"] as! TimeInterval).timeAgoSinceNow()) as  String
         
-        var timeStr = String(timeString) as NSString
-    cell.dateTime.text = String(timeString)
+       
+    cell.dateTime.text = timeString
         
         if userDict["posts"] as? String == "none" {
             cell.postText.text = nil
@@ -230,6 +232,8 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
         postPics = dict["postPics"] as? String
         posts = dict["posts"] as? String
         profilePics = dict["profilePics"] as? String
+        timestampzz = dict["timestamp"] as? TimeInterval
+        print("this is the STAMP:", timestampzz as Any)
 //        let keysus = self.keyArray[indexPath.row]
 //
 //        keyzy = keysus
@@ -332,7 +336,7 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:[String : Any]) {
         let tempImage:UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        imagePreview.image  = tempImage
+        //imagePreview.image  = tempImage
         //self.writeAboutInFirebase(about: self.post.text!)
         
         
@@ -358,6 +362,8 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
                             let pathURL = url?.absoluteString
                             //let pathString = pathURL?.path
                             self.setUserInformation(profileImageURL: pathURL!, profilePic: self.profilePic!)
+                            self.usersArray.removeAll()
+                            self.updatePosts()
                             // Get the download URL for 'images/stars.jpg'
                             //                        let values = ["name": withName, "email": email, "profilePicLink": url?.absoluteString] as [String : Any]
                             //                        Database.database().reference().child("users").child((user?.user.uid)!).child("credentials").updateChildValues(values, withCompletionBlock: { (errr, _) in
@@ -415,7 +421,7 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
             vc.pagePostPics = postPics
             vc.pagePosts = posts
             vc.pageProfilePics = profilePics
-            
+            vc.thestampp = timestampzz
         }
     }
 }
