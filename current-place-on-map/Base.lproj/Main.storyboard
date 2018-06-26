@@ -2142,6 +2142,7 @@
                         <outlet property="leaveAcomment" destination="cMi-oq-36A" id="24K-8p-J7x"/>
                         <outlet property="pagePostImage" destination="f5M-CD-8Tg" id="3iI-hi-0uj"/>
                         <outlet property="pagePostText" destination="Mvg-q4-vTO" id="Csy-mC-GrG"/>
+                        <outlet property="tableView" destination="0m0-c7-GhP" id="Ov2-og-woG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K3Z-SA-ie1" userLabel="First Responder" sceneMemberID="firstResponder"/>

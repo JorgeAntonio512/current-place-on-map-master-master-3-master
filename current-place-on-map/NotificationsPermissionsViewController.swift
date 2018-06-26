@@ -38,7 +38,7 @@ class NotificationsPermissionsViewController: UIViewController {
         
     }
     
-    
+
     
     @IBAction func enabledz(_ sender: Any) {
     

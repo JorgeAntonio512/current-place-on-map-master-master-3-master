@@ -17,6 +17,7 @@ import KMPlaceholderTextView
 
 class PostPageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var pagePostImage: UIImageView!
     @IBOutlet weak var pagePostText: UITextView!
@@ -27,6 +28,8 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
     var pagePosts:String?
     var pageProfilePics:String?
     var thestampp:TimeInterval?
+    
+    var commentArray = [ [String: Any] ]()
     
     
     override func viewDidLoad() {
@@ -66,31 +69,26 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
         if keyChain.get("uid") != nil {
             let FirebaseUid = keyChain.get("uid")
             //set up firebase references:
-            let ref = Database.database().reference().child("posts").childByAutoId()
-            let FirebaseMessageRef = ref.queryEqual(toValue: thestampp, childKey: "timestamp")
+            //let ref = Database.database().reference().child("posts").childByAutoId()
+            //let FirebaseMessageRef = ref.queryEqual(toValue: thestampp, childKey: "timestamp")
             //save the message in Firebase
             let interval = NSDate().timeIntervalSince1970
            
-            FirebaseMessageRef.observeSingleEvent(of: .childAdded) { (snapshot) in
-                let newRef = snapshot.ref.child("comment")
-                newRef.setValue(about)
+            //FirebaseMessageRef.observeSingleEvent(of: .childAdded) { (snapshot) in
+               // let newRef = snapshot.ref.child("comment")
+                //newRef.setValue(about)
                 }
-            Database.database().reference().child("posts").queryOrdered(byChild: "timestamp").queryEqual(toValue: thestampp).observeSingleEvent(of: .value, with: { (snapshot) in
-                if snapshot.exists() {
+            let ref = Database.database().reference().child("posts")
+            let query = ref.queryOrdered(byChild: "timestamp").queryEqual(toValue: thestampp)
+                
+                query.observeSingleEvent(of: .childAdded) { (snapshot) in
                     print("FRIEND ALREADY EXISTS!")
-                } else {
-                    print("FRIEND DOES NOT EXIST! ESTABLISHING FRIENDSHIP:")
-                    print(self.thestampp as Any)
-                    //self.dismiss(animated: true, completion: nil)
-                }
-            }) { (error) in
-                print(error.localizedDescription)
-            }
-            
-            //FirebaseMessageRef.updateChildValues(["/comments/": about])
-            //FirebaseMessageRef.updateChildValues(["/profilePics/": profilePics])
+                    let newRef = snapshot.ref
+                    newRef.child("comments").childByAutoId().setValue(about)
         }
-    }
+       
+                }
+    
     
     
     @IBAction func leaveComment(_ sender: Any) {
@@ -114,13 +112,66 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        commentArray.removeAll()
+        updateComments()
+        
+        
+    }
+    
+    func updateComments() {
+        let ref = Database.database().reference().child("posts")
+        let query = ref.queryOrdered(byChild: "timestamp").queryEqual(toValue: thestampp)
+        
+        
+        query.observeSingleEvent(of: .value, with: { snapshot in
+            
+            if ( snapshot.value is NSNull ) {
+                print("not found")
+            } else {
+                
+                
+                
+                for child in (snapshot.children) {
+                    
+                    let snap = child as! DataSnapshot //each child is a snapshot
+                    
+                    let dict = snap.value as? [String:AnyObject] // the value is a dict
+                    
+                    //let name = dict!["posts"] as? String
+                    //let food = dict!["height"] as? String
+                    let key = snap.key
+                    print(key)
+                    //print("\(name) loves \(food)")
+                    //self.usersArray.append(dict!)
+                    self.commentArray.insert(dict!, at: 0)
+                    print(self.commentArray)
+                    //self.postsName.text = dict!["posts"] as? String
+                    //self.keyArray.append(key)
+                }
+                self.tableView.reloadData()
+            }
+            
+        })
+    }
+    
+    
+    
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.commentArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let userDict = self.commentArray[indexPath.row]
          let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
-        cell.textie.text = pagePostPics! + pagePosts! + pageProfilePics!
+        cell.detailTextLabel?.text = userDict["comments"] as? String
         return cell
     }
     
