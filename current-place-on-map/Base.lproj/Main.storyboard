@@ -1717,10 +1717,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Iek-Xk-XKd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="75.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="75.333333333333329"/>
                                                     <subviews>
                                                         <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7ss-Ab-3BU">
-                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="75.666666666666671"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="75.333333333333329"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2112,10 +2112,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f5M-CD-8Tg">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="349"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gwv-TP-WM1">
                                 <rect key="frame" x="326" y="393" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2134,6 +2130,16 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Leave a nice comment!"/>
                                 </userDefinedRuntimeAttributes>
                             </textView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TSj-pP-MeP">
+                                <rect key="frame" x="20" y="28" width="374" height="341"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f5M-CD-8Tg">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="280"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -2142,6 +2148,7 @@
                         <outlet property="leaveAcomment" destination="cMi-oq-36A" id="24K-8p-J7x"/>
                         <outlet property="pagePostImage" destination="f5M-CD-8Tg" id="3iI-hi-0uj"/>
                         <outlet property="pagePostText" destination="Mvg-q4-vTO" id="Csy-mC-GrG"/>
+                        <outlet property="scrollView" destination="TSj-pP-MeP" id="uIg-0L-2cZ"/>
                         <outlet property="tableView" destination="0m0-c7-GhP" id="Ov2-og-woG"/>
                     </connections>
                 </viewController>
@@ -3045,14 +3052,14 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="139"/>
                                             </stackView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="send" translatesAutoresizingMaskIntoConstraints="NO" id="mZr-jJ-NpR">
-                                                <rect key="frame" x="138" y="0.0" width="138.33333333333337" height="139"/>
+                                                <rect key="frame" x="138" y="0.0" width="138" height="139"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="70" id="9n7-B3-iZp"/>
                                                     <constraint firstAttribute="width" constant="70" id="V3g-wc-cg9"/>
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="njV-XO-Iyy">
-                                                <rect key="frame" x="276.33333333333331" y="0.0" width="137.66666666666669" height="139"/>
+                                                <rect key="frame" x="276" y="0.0" width="138" height="139"/>
                                             </stackView>
                                         </subviews>
                                         <constraints>

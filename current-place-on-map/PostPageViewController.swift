@@ -19,6 +19,7 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pagePostImage: UIImageView!
     @IBOutlet weak var pagePostText: UITextView!
     @IBOutlet weak var leaveAcomment: KMPlaceholderTextView!
@@ -33,11 +34,17 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     override func viewDidLoad() {
+       super.viewDidLoad()
+        
         leaveAcomment.layer.borderWidth = 1.0
         commentBtn.layer.borderWidth = 1.0
         
         leaveAcomment.layer.borderColor = UIColor.blue.cgColor
         commentBtn.layer.borderColor = UIColor.blue.cgColor
+        
+        scrollView.delegate = self
+        scrollView.maximumZoomScale = 10.0
+        
         
         if pagePostPics == "none"  {
             pagePostImage.isHidden = true
@@ -147,7 +154,7 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
                     //print("\(name) loves \(food)")
                     //self.usersArray.append(dict!)
                     self.commentArray.insert(dict!, at: 0)
-                    print(self.commentArray)
+                    print(dict!["comments"] as Any)
                     //self.postsName.text = dict!["posts"] as? String
                     //self.keyArray.append(key)
                 }
@@ -159,7 +166,10 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     
-    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        
+        return pagePostImage
+    }
     
     
     
@@ -172,6 +182,7 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
         let userDict = self.commentArray[indexPath.row]
          let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         cell.detailTextLabel?.text = userDict["comments"] as? String
+        print("what the...", userDict["comments"] as Any)
         return cell
     }
     
