@@ -36,6 +36,9 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
        super.viewDidLoad()
         
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
         leaveAcomment.layer.borderWidth = 1.0
         commentBtn.layer.borderWidth = 1.0
         
@@ -92,7 +95,7 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
                 query.observeSingleEvent(of: .childAdded) { (snapshot) in
                     print("FRIEND ALREADY EXISTS!")
                     let newRef = snapshot.ref
-                    newRef.child("comments").childByAutoId().setValue(about)
+                    newRef.child("comments").childByAutoId().child("comment").setValue(about)
         }
        
                 }
@@ -151,20 +154,47 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
                     //let name = dict!["posts"] as? String
                     //let food = dict!["height"] as? String
                     let key = snap.key
+                    
+                    
+                    ref.child(key).child("comments").observeSingleEvent(of: .value, with: { (snapshot) in
+                      
+                       print("well im here..")
+                        for child in (snapshot.children) {
+                            print("and now here?")
+                            let snap = child as! DataSnapshot //each child is a snapshot
+                            
+                            let dict = snap.value as? [String:AnyObject]
+                            
+                               // postsCommentsDict.setObject(each["userName"] as! String , forKey : each["userComment"] as! String)
+                                //Saving the userName : UserComment in a dictionary
+                               // userNameArray.append(each["userName"] as! String)
+                               // userCommentArray.append(each["userComment"] as! String)
+                                //Saving the details in arrays
+                                //Prefer dictionary over Arrays
+                                
+                            self.commentArray.insert(dict!, at: 0)
+                            print("THIS IS THE AWESOME", self.commentArray)
+                        }
+                         self.tableView.reloadData()
+                        
+                    })
+                
+                            
+                        
                     print(key)
                     //print("\(name) loves \(food)")
                     //self.usersArray.append(dict!)
-                    self.commentArray.insert(dict!, at: 0)
+                    
                     print(dict!["comments"] as Any)
                     //self.postsName.text = dict!["posts"] as? String
                     //self.keyArray.append(key)
-                }
-                self.tableView.reloadData()
+                
+                
             }
             
-        })
+            }})
+       
     }
-    
     
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
@@ -183,7 +213,15 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
         let userDict = self.commentArray[indexPath.row]
          let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         cell.detailTextLabel?.text = userDict["comments"] as? String
-        print("what the...", userDict["comments"] as Any)
+        print("iamhere?")
+        cell.textie.text = "hello there!" //userDict["comment"] as? String
+        DispatchQueue.main.async {
+            // Update UI
+            cell.textie.text = userDict["comment"] as? String
+            print("what the heck...", userDict["comments"] as Any)
+        }
+     
+        
         return cell
     }
     
