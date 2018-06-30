@@ -38,4 +38,10 @@ target 'current-place-on-map' do
   # Pods for
   pod 'KeychainSwift'
   # pod 'Font-Awesome-Swift'
+  post_install do |installer|
+      installer.pods_project.build_configurations.each do |config|
+          config.build_settings.delete('CODE_SIGNING_ALLOWED')
+          config.build_settings.delete('CODE_SIGNING_REQUIRED')
+      end
+end 
 end

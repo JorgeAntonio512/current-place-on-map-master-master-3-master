@@ -47,6 +47,7 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
         
         
         if pagePostPics == "none"  {
+            scrollView.isHidden = true
             pagePostImage.isHidden = true
             pagePostText.text = pagePosts
         }
