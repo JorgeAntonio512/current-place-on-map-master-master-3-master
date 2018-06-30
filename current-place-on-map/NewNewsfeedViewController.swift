@@ -420,7 +420,7 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
             let vc = segue.destination as! PostPageViewController
             vc.pagePostPics = postPics
             vc.pagePosts = posts
-            vc.pageProfilePics = profilePics
+            vc.pageProfilePics = profilePic
             vc.thestampp = timestampzz
         }
     }

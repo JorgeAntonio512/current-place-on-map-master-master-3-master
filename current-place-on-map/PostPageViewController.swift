@@ -36,6 +36,7 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
        super.viewDidLoad()
         
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -97,7 +98,9 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
                     let newRef = snapshot.ref
                     newRef.child("comments").childByAutoId().child("comment").setValue(about)
         }
-       
+    leaveAcomment.text.removeAll()
+        commentArray.removeAll()
+       updateComments()
                 }
     
     
@@ -212,13 +215,10 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let userDict = self.commentArray[indexPath.row]
          let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
-        cell.detailTextLabel?.text = userDict["comments"] as? String
-        print("iamhere?")
-        cell.textie.text = "hello there!" //userDict["comment"] as? String
+    
         DispatchQueue.main.async {
             // Update UI
             cell.textie.text = userDict["comment"] as? String
-            print("what the heck...", userDict["comments"] as Any)
         }
      
         
