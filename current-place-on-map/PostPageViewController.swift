@@ -30,6 +30,8 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
     var pageProfilePics:String?
     var thestampp:TimeInterval?
     
+    var namedname:String?
+    
     var commentArray = [ [String: Any] ]()
     
     
@@ -72,8 +74,21 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
                 
             })
         }
+        //Print user id from (User's device local storage):
+        //let keyChain = DataService().keyChain
+        let keyChain = DataService().keyChain
+        if keyChain.get("uid") != nil {
+            let FirebaseUid = keyChain.get("uid")
+            print("KEYCHAIN USER id: \(FirebaseUid!)")
         
-        
+        let FirebaseMessageRefName = Database.database().reference().child("users/\(FirebaseUid!)/name")
+        FirebaseMessageRefName.observe(.value) { (snap: DataSnapshot) in
+            self.namedname = (snap.value as AnyObject).description
+            
+            print(self.namedname! + "hell no it works!")
+            //self.Namename.text = profileName
+        }
+        }
     }
     func writeCommentInFirebase(about: String) {
         //Select the correct user
@@ -96,8 +111,7 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
                 query.observeSingleEvent(of: .childAdded) { (snapshot) in
                     print("FRIEND ALREADY EXISTS!")
                     let newRef = snapshot.ref
-                    newRef.child("comments").childByAutoId().child("comment").setValue(about)
-        }
+                    newRef.child("comments").childByAutoId().child("comment").updateChildValues(["/comment/": about, "/name/": self.namedname as Any, "/timestamp/": self.thestampp as Any])        }
     leaveAcomment.text.removeAll()
         commentArray.removeAll()
        updateComments()

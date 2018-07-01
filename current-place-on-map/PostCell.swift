@@ -13,7 +13,9 @@ class PostCell: UITableViewCell {
     
     
 
-@IBOutlet weak var textie:UITextView!
+    @IBOutlet weak var dateNtime: UILabel!
+    @IBOutlet weak var namedCell: UILabel!
+    @IBOutlet weak var textie:UITextView!
     
     
     override func awakeFromNib() {
