@@ -111,7 +111,8 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
                 query.observeSingleEvent(of: .childAdded) { (snapshot) in
                     print("FRIEND ALREADY EXISTS!")
                     let newRef = snapshot.ref
-                    newRef.child("comments").childByAutoId().updateChildValues(["/comment/": about, "/name/": self.namedname as Any, "/timestamp/": self.thestampp as Any, "/profilePic/": self.pageProfilePics as Any])        }
+                    let interval = NSDate().timeIntervalSince1970
+                    newRef.child("comments").childByAutoId().updateChildValues(["/comment/": about, "/name/": self.namedname as Any, "/timestamp/": interval, "/profilePic/": self.pageProfilePics as Any])        }
     leaveAcomment.text.removeAll()
         commentArray.removeAll()
        updateComments()
@@ -219,7 +220,9 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
         return pagePostImage
     }
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 140.0
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.commentArray.count
@@ -255,6 +258,17 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
             // Update UI
             cell.textie.text = userDict["comment"] as? String
             cell.namedCell.text = userDict["name"] as? String
+        
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeZone = TimeZone(abbreviation: "CST") //Set timezone that you want
+            dateFormatter.locale = NSLocale.current
+            dateFormatter.dateFormat = "h:mm a, EEEE, MMM d, yyyy" //Specify your format that you want
+            //let timeString = "\(dateFormatter.string(from: NSDate(timeIntervalSince1970: userDict["timestamp"] as! TimeInterval) as Date))"
+            
+            let timeString = (NSDate(timeIntervalSince1970: userDict["timestamp"] as! TimeInterval).timeAgoSinceNow()) as  String
+            
+            
+            cell.dateNtime.text = timeString
         }
      
         
