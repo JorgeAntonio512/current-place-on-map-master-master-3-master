@@ -111,7 +111,7 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
                 query.observeSingleEvent(of: .childAdded) { (snapshot) in
                     print("FRIEND ALREADY EXISTS!")
                     let newRef = snapshot.ref
-                    newRef.child("comments").childByAutoId().child("comment").updateChildValues(["/comment/": about, "/name/": self.namedname as Any, "/timestamp/": self.thestampp as Any])        }
+                    newRef.child("comments").childByAutoId().updateChildValues(["/comment/": about, "/name/": self.namedname as Any, "/timestamp/": self.thestampp as Any, "/profilePic/": self.pageProfilePics as Any])        }
     leaveAcomment.text.removeAll()
         commentArray.removeAll()
        updateComments()
@@ -230,9 +230,31 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
         let userDict = self.commentArray[indexPath.row]
          let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
     
+        
+        let url = URL(string: userDict["profilePic"] as! String)
+        let imagur = #imageLiteral(resourceName: "notthere")
+        cell.imageView?.kf.setImage(with: url, placeholder: imagur, completionHandler: {
+            (image, error, cacheType, imageUrl) in
+            if let error = error {
+                // Uh-oh, an error occurred!
+            } else {
+                
+                print("deezzz imageview")
+            }
+            // image: Image? `nil` means failed
+            // error: NSError? non-`nil` means failed
+            // cacheType: CacheType
+            //                  .none - Just downloaded
+            //                  .memory - Got from memory cache
+            //                  .disk - Got from disk cache
+            // imageUrl: URL of the image
+        })
+        
+        
         DispatchQueue.main.async {
             // Update UI
             cell.textie.text = userDict["comment"] as? String
+            cell.namedCell.text = userDict["name"] as? String
         }
      
         
