@@ -135,8 +135,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if let error = error {
                 // Uh-oh, an error occurred!
             } else {
-                
-                print("deezzz imageview")
             }
             // image: Image? `nil` means failed
             // error: NSError? non-`nil` means failed
@@ -153,20 +151,13 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         cell.textLabel?.text = userDict["name"] as? String
         cell.detailTextLabel?.text = userDict["height"] as? String
-        print("deez nuts?")
-        //cell.textLabel?.text = self.filteredCakes[indexPath.row].name
-        //cell.detailTextLabel?.text = self.filteredCakes[indexPath.row].height
     
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print("Row \(indexPath.row) selected")
-//        let cell = tableView.cellForRow(at: indexPath)
-//        tableView.deselectRow(at: indexPath, animated: true)
-//
-//        yourValue = cell?.textLabel?.text
+
         let dict = self.usersArray[indexPath.row]
         let keysus = self.keyArray[indexPath.row]
         

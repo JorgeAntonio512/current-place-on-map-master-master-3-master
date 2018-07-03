@@ -186,7 +186,6 @@ class FriendsViewController: UITableViewController {
             if let error = error {
                 // Uh-oh, an error occurred!
             } else {
-            print("deezzz imageview")
             }
             // image: Image? `nil` means failed
             // error: NSError? non-`nil` means failed

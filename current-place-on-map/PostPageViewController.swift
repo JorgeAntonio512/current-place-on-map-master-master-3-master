@@ -68,8 +68,6 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
                 if let error = error {
                     // Uh-oh, an error occurred!
                 } else {
-                    
-                    print("deezzz imageview")
                 }
                 
             })
@@ -94,16 +92,7 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
         //Select the correct user
         let keyChain = DataService().keyChain
         if keyChain.get("uid") != nil {
-            let FirebaseUid = keyChain.get("uid")
-            //set up firebase references:
-            //let ref = Database.database().reference().child("posts").childByAutoId()
-            //let FirebaseMessageRef = ref.queryEqual(toValue: thestampp, childKey: "timestamp")
-            //save the message in Firebase
-            let interval = NSDate().timeIntervalSince1970
            
-            //FirebaseMessageRef.observeSingleEvent(of: .childAdded) { (snapshot) in
-               // let newRef = snapshot.ref.child("comment")
-                //newRef.setValue(about)
                 }
             let ref = Database.database().reference().child("posts")
             let query = ref.queryOrdered(byChild: "timestamp").queryEqual(toValue: thestampp)
@@ -130,13 +119,6 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
             
         } else {
             self.writeCommentInFirebase(about: self.leaveAcomment.text)
-            
-            //navigationController?.popViewController(animated: true)
-            //        let alertController = UIAlertController(title: "Your post has been shared!", message:
-            //            "Please press the \"Back\" button!", preferredStyle: UIAlertControllerStyle.alert)
-            //        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-            //
-            //        self.present(alertController, animated: true, completion: nil)
         }
     
     
@@ -168,27 +150,16 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
                     let snap = child as! DataSnapshot //each child is a snapshot
                     
                     let dict = snap.value as? [String:AnyObject] // the value is a dict
-                    
-                    //let name = dict!["posts"] as? String
-                    //let food = dict!["height"] as? String
+                
                     let key = snap.key
                     
                     
                     ref.child(key).child("comments").observeSingleEvent(of: .value, with: { (snapshot) in
-                      
-                       print("well im here..")
                         for child in (snapshot.children) {
-                            print("and now here?")
                             let snap = child as! DataSnapshot //each child is a snapshot
                             
                             let dict = snap.value as? [String:AnyObject]
                             
-                               // postsCommentsDict.setObject(each["userName"] as! String , forKey : each["userComment"] as! String)
-                                //Saving the userName : UserComment in a dictionary
-                               // userNameArray.append(each["userName"] as! String)
-                               // userCommentArray.append(each["userComment"] as! String)
-                                //Saving the details in arrays
-                                //Prefer dictionary over Arrays
                                 
                             self.commentArray.insert(dict!, at: 0)
                             print("THIS IS THE AWESOME", self.commentArray)
@@ -198,15 +169,6 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
                     })
                 
                             
-                        
-                    print(key)
-                    //print("\(name) loves \(food)")
-                    //self.usersArray.append(dict!)
-                    
-                    print(dict!["comments"] as Any)
-                    //self.postsName.text = dict!["posts"] as? String
-                    //self.keyArray.append(key)
-                
                 
             }
             
@@ -241,8 +203,6 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
             if let error = error {
                 // Uh-oh, an error occurred!
             } else {
-                
-                print("deezzz imageview")
             }
             // image: Image? `nil` means failed
             // error: NSError? non-`nil` means failed
@@ -263,7 +223,6 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
             dateFormatter.timeZone = TimeZone(abbreviation: "CST") //Set timezone that you want
             dateFormatter.locale = NSLocale.current
             dateFormatter.dateFormat = "h:mm a, EEEE, MMM d, yyyy" //Specify your format that you want
-            //let timeString = "\(dateFormatter.string(from: NSDate(timeIntervalSince1970: userDict["timestamp"] as! TimeInterval) as Date))"
             
             let timeString = (NSDate(timeIntervalSince1970: userDict["timestamp"] as! TimeInterval).timeAgoSinceNow()) as  String
             

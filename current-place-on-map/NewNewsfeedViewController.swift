@@ -103,8 +103,7 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
                     self.imagePreview.frame = CGRect(x: 25, y: 15, width: 50, height: 50)
                     self.imagePreview.layer.cornerRadius = 25
                     self.imagePreview.clipsToBounds = true
-                    //                self.pic.center = CGPoint(x: self.picCell.contentView.bounds.size.width/2,y: self.picCell.contentView.bounds.size.height/2)
-                    //
+
                     
                 }}
         }
@@ -118,6 +117,13 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
         updatePosts()
      
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+
     }
     
     
@@ -152,7 +158,6 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
                 // Uh-oh, an error occurred!
             } else {
                 
-                print("deezzz imageview")
             }
             // image: Image? `nil` means failed
             // error: NSError? non-`nil` means failed
@@ -164,32 +169,10 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
         })
         
         
-        //        let url = URL(string: userDict["profileImageURL"] as! String)
-        //        let imagur = #imageLiteral(resourceName: "notthere")
-        //        cell.imageView?.kf.setImage(with: url, placeholder: imagur, completionHandler: {
-        //            (image, error, cacheType, imageUrl) in
-        //            if let error = error {
-        //                // Uh-oh, an error occurred!
-        //            } else {
-        //
-        //                print("deezzz imageview")
-        //            }
-        //            // image: Image? `nil` means failed
-        //            // error: NSError? non-`nil` means failed
-        //            // cacheType: CacheType
-        //            //                  .none - Just downloaded
-        //            //                  .memory - Got from memory cache
-        //            //                  .disk - Got from disk cache
-        //            // imageUrl: URL of the image
-        //        })
         
         
         let keyChain = DataService().keyChain
         if keyChain.get("uid") != nil {
-            let FirebaseUid = keyChain.get("uid")
-        //let FirebaseNameRef = Database.database().reference().child("users/\(FirebaseUid!)/name")
-       // let FirebaseNameRef = Database.database().reference().child("posts").childByAutoId().child("name")
-        //FirebaseNameRef.observe(.value) { (snap: DataSnapshot) in
             
             
             
@@ -234,33 +217,8 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
         profilePics = dict["profilePics"] as? String
         timestampzz = dict["timestamp"] as? TimeInterval
         print("this is the STAMP:", timestampzz as Any)
-//        let keysus = self.keyArray[indexPath.row]
-//
-//        keyzy = keysus
-//        yourValue = dict["name"] as? String
-//        yourRelStatus = dict["status"] as? String
-//        yourGender = dict["gender"] as? String
-//        yourHeight = dict["height"] as? String
-//        yourZip = dict["city"] as? String
-//        yourAbout = dict["about"] as? String
-//        yourProPic = dict["profileImageURL"] as? String
-//        let islandRef = Storage.storage().reference(forURL: yourProPic!)
-//        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-//        islandRef.getData(maxSize: 10 * 1024 * 1024) { data,fnumbe error in
-//            if let error = error {
-//                // Uh-oh, an error occurred!
-//            } else {
-//                // Data for "images/island.jpg" is returned
-//                let image = UIImage(data: data!)
-//
-//                let user = User.init(name: self.yourValue as! String, email: self.yourHeight as! String, id: self.keyzy!, profilePic: image!)
-//                print(self.keyzy! + "this is the keyzy fosheezy!")
-//                self.selectedUser = user
+
                 self.performSegue(withIdentifier: "toPostPage", sender: self)
-                
-           // }
-            
-       // }
         
     }
     

@@ -40,22 +40,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         super.viewDidLoad()
         print("Screnn Height:\(screenHeight)")
         //STYLE
-        /*
-         //Font awsome code:
-         emailField.setLeftViewFAIcon(icon: .FAEnvelope, leftViewMode: .always, textColor: .lightGray, backgroundColor: .clear, size: CGSize(width: 35, height: 20))
-         passwordField.setLeftViewFAIcon(icon: .FALock, leftViewMode: .always, textColor: .lightGray, backgroundColor: .clear, size: CGSize(width: 35, height: 20))
-         CustomFacebookLb.setFAText(prefixText: "", icon: .FAFacebookSquare, postfixText: "  Sign in with Facebook", size: 18, forState: .normal)
-         CustomFacebookLb.setFATitleColor(color: .white, forState: .normal)
-         */
-        //CustomFacebookLb.setFATitleColor(color: .lightGray, forState: .highlighted)
         CustomFacebookLb.layer.cornerRadius = 5
         CustomFacebookLb.backgroundColor = FBColor
         RegisterLB.layer.borderWidth = 1
         RegisterLB.layer.cornerRadius = 5
         RegisterLB.layer.borderColor = linkColor
-        //LoginLB.layer.borderWidth = 1
-        //LoginLB.layer.cornerRadius = 5
-        //LoginLB.layer.borderColor = linkColor
         self.hideKeyboard()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
@@ -415,28 +404,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         LoginLB.layer.borderColor = linkColorLight
     }
     
-//    func linkAccountWihtFacebook(){
-//        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-//        Auth.auth().currentUser?.link(with: credential, completion: { (user: User?, error: Error?) in
-//
-//            if let LinkedUser = user{
-//                print("NEW USER:",LinkedUser.uid)
-//            }
-//
-//            if let error = error as NSError?{
-//                //Indicates an attempt to link a provider of a type already linked to this account.
-//                if error.code == AuthErrorCode.providerAlreadyLinked.rawValue{
-//                    print("FIRAuthErrorCode.errorCodeProviderAlreadyLinked")
-//                }
-//
-//                //This credential is already associated with a different user account.
-//                if error.code == 17025{
-//
-//                }
-//                print("ERROR: ",error)
-//            }
-//        })
-//    }
     
     
     func showErrorAlert(title: String, msg: String) {

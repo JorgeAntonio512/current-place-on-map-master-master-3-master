@@ -22,9 +22,7 @@ class MapkitViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // set initial location in Honolulu
-       // let initialLocation = CLLocation(latitude: 30.265212, longitude: -97.756050)
-        //centerMapOnLocation(location: initialLocation)
+        
         mapView.userTrackingMode = .follow
         var region = MKCoordinateRegion()
         region.span = MKCoordinateSpanMake(0.7, 0.7); //Zoom distance
@@ -33,22 +31,14 @@ class MapkitViewController: UIViewController {
         mapView.setRegion(region, animated: true)
         
         mapView.delegate = self
-        //    mapView.register(ArtworkMarkerView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         if #available(iOS 11.0, *) {
             mapView.register(ArtworkView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         } else {
             // Fallback on earlier versions
         }
-       // loadInitialData()
-        //mapView.addAnnotations(artworks)
         
         
-        // show artwork on map
-//            let artwork = Artwork(title: "King David Kalakaua",
-//              locationName: "Waikiki Gateway Park",
-//              discipline: "Sculpture",
-//              coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661))
-//            mapView.addAnnotation(artwork)
+
    
         
         Database.database().reference().child("markers").observe(.value, with: { snapshot in
@@ -71,12 +61,7 @@ class MapkitViewController: UIViewController {
                     let snippet = dict["snippet"] as? String
                     
                     
-                    print("CHYEAH BOYYYY!!")
                     let position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                    //                    let marker = GMSMarker(position: position)
-                    //                    marker.title = title
-                    //                    marker.snippet = snippet
-                    //                    marker.map = self.mapView
                     let artwork = Artwork(title: titlez!, locationName: snippet!, discipline: "Flag", coordinate: position)
                     self.mapView.addAnnotation(artwork)
                     
@@ -93,14 +78,9 @@ class MapkitViewController: UIViewController {
         super.viewDidAppear(animated)
         if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse){
             print("heyheyhey")
-            //self.tabBarController?.tabBar.isHidden = false;
-            //self.tabBarController?.tabBar.isHidden = false
-            //self.enableView.isHidden = true;
-            //performSegue(withIdentifier: "toMapy", sender: self)
         }
         else if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.restricted){
             print("Location access was restricted.")
-            //performSegue(withIdentifier: "toOpenSettings", sender: self)
         }
         else if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.denied){
             print("User denied access to location. this is da whey.")
@@ -108,7 +88,6 @@ class MapkitViewController: UIViewController {
         }
         else if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.notDetermined){
             print("Location status not determined. Scrubby.")
-            // performSegue(withIdentifier: "toEnableLoc", sender: self)
             checkLocationAuthorizationStatus()
         }
         else{
@@ -166,31 +145,7 @@ class MapkitViewController: UIViewController {
 
 extension MapkitViewController: MKMapViewDelegate {
     
-    //   1
-    //  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-    //    guard let annotation = annotation as? Artwork else { return nil }
-    //    // 2
-    //    let identifier = "marker"
-    //    var view: MKMarkerAnnotationView
-    //    if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-    //      as? MKMarkerAnnotationView { // 3
-    //      dequeuedView.annotation = annotation
-    //      view = dequeuedView
-    //    } else {
-    //      // 4
-    //      view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-    //      view.canShowCallout = true
-    //      view.calloutOffset = CGPoint(x: -5, y: 5)
-    //      view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-    //    }
-    //    return view
-    //  }
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-//        var region = MKCoordinateRegion()
-//        region.span = MKCoordinateSpanMake(0.7, 0.7); //Zoom distance
-//        let coordinate = CLLocationCoordinate2D(latitude: 30.265212, longitude: -97.756050)
-//        region.center = coordinate
-//        mapView.setRegion(region, animated: true)
     }
     
     

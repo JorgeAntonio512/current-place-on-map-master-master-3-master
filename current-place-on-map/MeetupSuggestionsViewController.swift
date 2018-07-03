@@ -32,9 +32,6 @@ class MeetupSuggestionsViewController: UIViewController, WKUIDelegate, WKNavigat
             let webpage = snap.value as! String
             
             let myURL = URL(string: webpage)
-            //let myRequest = URLRequest(url: myURL!)
-            //self.webView.load(myRequest)
-            //
             guard let url = URL(string: webpage) else { return }
             self.webView = WKWebView(frame: self.view.frame)
             self.webView.translatesAutoresizingMaskIntoConstraints = false
