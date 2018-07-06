@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.50.11</string>
+	<string>2.60</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -36,7 +36,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>29</string>
+	<string>31</string>
 	<key>FacebookAppID</key>
 	<string>400166857068801</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
@@ -60,7 +60,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Allow us to use camera to capture the image</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We&apos;ll show your current location on the map.</string>
+	<string>We'll show your current location on the map.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>This app uses your Microphone to allow Voice over IP communication with the Program Admin system</string>
 	<key>NSPhotoLibraryUsageDescription</key>

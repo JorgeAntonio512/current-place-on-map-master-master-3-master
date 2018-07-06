@@ -114,7 +114,7 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidAppear(_ animated: Bool) {
         
         usersArray.removeAll()
-            self.tableView.reloadData()
+            //self.tableView.reloadData()
         updatePosts()
      
         

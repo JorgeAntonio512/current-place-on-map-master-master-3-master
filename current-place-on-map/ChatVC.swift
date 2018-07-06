@@ -11,13 +11,14 @@ import UIKit
 import Photos
 import Firebase
 import CoreLocation
+import KMPlaceholderTextView
 
 class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate,  UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate {
     
     //MARK: Properties
     @IBOutlet var inputBar: UIView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var inputTextField: UITextField!
+    @IBOutlet weak var inputTextField: KMPlaceholderTextView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     override var inputAccessoryView: UIView? {
         get {
