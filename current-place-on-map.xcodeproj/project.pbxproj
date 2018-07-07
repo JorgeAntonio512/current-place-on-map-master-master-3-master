@@ -33,6 +33,7 @@
 		3D51D52B206AEE22004C357C /* TabBarMainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D51D52A206AEE22004C357C /* TabBarMainMenuController.swift */; };
 		3D5B236D1FFEFC1B00E94FB4 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B236C1FFEFC1B00E94FB4 /* MenuViewController.swift */; };
 		3D60735720A0EB3600701B44 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D60735620A0EB3600701B44 /* CustomTableViewCell.swift */; };
+		3D669E6A20F0F55300666779 /* PostPicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D669E6920F0F55300666779 /* PostPicViewController.swift */; };
 		3D708F0C20C2BFEA005F0A04 /* PostImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D708F0B20C2BFEA005F0A04 /* PostImageCell.swift */; };
 		3D7199DA1FE6F95900BDDD4D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7199D91FE6F95900BDDD4D /* Constants.swift */; };
 		3D7199DD1FE6F9FD00BDDD4D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7199DC1FE6F9FD00BDDD4D /* AuthService.swift */; };
@@ -97,6 +98,7 @@
 		3D51D52A206AEE22004C357C /* TabBarMainMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMainMenuController.swift; sourceTree = "<group>"; };
 		3D5B236C1FFEFC1B00E94FB4 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		3D60735620A0EB3600701B44 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		3D669E6920F0F55300666779 /* PostPicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPicViewController.swift; sourceTree = "<group>"; };
 		3D708F0B20C2BFEA005F0A04 /* PostImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageCell.swift; sourceTree = "<group>"; };
 		3D7199D91FE6F95900BDDD4D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3D7199DC1FE6F9FD00BDDD4D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				3DC8CCA520C9DF7B00361C93 /* DonateViewController.swift */,
 				3DF14C9120CDEA6B005258E1 /* PostPageViewController.swift */,
 				3DF14C9320CDF057005258E1 /* PostCell.swift */,
+				3D669E6920F0F55300666779 /* PostPicViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				3D3E69D02003047800BC251A /* PeoplezProfilesViewController.swift in Sources */,
 				3D7199DD1FE6F9FD00BDDD4D /* AuthService.swift in Sources */,
 				3D15C1E6200D806300C09794 /* User.swift in Sources */,
+				3D669E6A20F0F55300666779 /* PostPicViewController.swift in Sources */,
 				3DCD51362055C9EA00C13A2D /* CreatePostViewController.swift in Sources */,
 				3D4891C81FC107A5003ED366 /* SuggestionTotalsViewController.swift in Sources */,
 				3D2CA9B8200C4491002B28A3 /* FriendsViewController.swift in Sources */,

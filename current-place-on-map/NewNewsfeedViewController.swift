@@ -287,7 +287,7 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
             
             let child = UUID().uuidString
             let storageRef = Storage.storage().reference().child("postPics").child(child)
-            let imageData = UIImageJPEGRepresentation(tempImage, 0.1)
+            let imageData = UIImageJPEGRepresentation(tempImage, 1.0)
             storageRef.putData(imageData!, metadata: nil, completion: { (metadata, err) in
                 if err == nil {
                     storageRef.downloadURL { url, error in

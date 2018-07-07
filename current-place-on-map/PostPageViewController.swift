@@ -79,7 +79,23 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
             
         }
         }
+        
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        pagePostImage.isUserInteractionEnabled = true
+        pagePostImage.addGestureRecognizer(tapGestureRecognizer)
     }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        if (tapGestureRecognizer.view as? UIImageView) != nil {
+            print("ImageTapped")
+            performSegue(withIdentifier: "toPostPicView", sender: self)
+        }
+        
+        // Your action
+    }
+    
     func writeCommentInFirebase(about: String) {
         //Select the correct user
         let keyChain = DataService().keyChain
@@ -219,6 +235,12 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if(segue.identifier == "toPostPicView") {
+            let vc = segue.destination as! PostPicViewController
+            vc.postPic = pagePostPics
+        }
+    }
 
 }
