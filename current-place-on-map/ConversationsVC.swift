@@ -215,7 +215,9 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             let dataformatter = DateFormatter.init()
             dataformatter.timeStyle = .short
             let date = dataformatter.string(from: messageDate)
-            cell.timeLabel.text = date
+            
+              let timeString = (NSDate(timeIntervalSince1970: TimeInterval(self.items[indexPath.row].lastMessage.timestamp)).timeAgoSinceNow()) as  String
+            cell.timeLabel.text = timeString
             if self.items[indexPath.row].lastMessage.owner == .sender && self.items[indexPath.row].lastMessage.isRead == false {
                 cell.nameLabel.font = UIFont(name:"AvenirNext-DemiBold", size: 17.0)
                 cell.messageLabel.font = UIFont(name:"AvenirNext-DemiBold", size: 14.0)
