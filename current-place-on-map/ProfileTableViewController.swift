@@ -45,6 +45,19 @@ class ProfileTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let refreshedToken = InstanceID.instanceID().token() {
+            print("InstanceID token: \(refreshedToken)")
+            
+            let keyChain = DataService().keyChain
+            if keyChain.get("uid") != nil {
+                let FirebaseUid = keyChain.get("uid")
+                //set up firebase references:
+                let FirebaseMessageRef = Database.database().reference()
+                //save the message in Firebase
+                FirebaseMessageRef.updateChildValues(["/users/\(FirebaseUid!)/token": refreshedToken])
+            }}
+            
+            
         let toplineView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 1.0))
         toplineView.layer.borderWidth = 1.0
         toplineView.layer.borderColor = UIColor.lightGray.cgColor

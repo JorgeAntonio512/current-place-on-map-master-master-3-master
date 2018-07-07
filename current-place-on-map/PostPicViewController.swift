@@ -15,13 +15,8 @@ class PostPicViewController: UIViewController, UIScrollViewDelegate, UIImagePick
     
     @IBOutlet weak var postPicImageView: UIImageView!
     
-    @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.scrollView.delegate = self
-        self.scrollView.minimumZoomScale = 1.0
-        self.scrollView.maximumZoomScale = 10.0
         
         
         let url = URL(string: postPic!)
@@ -35,7 +30,15 @@ class PostPicViewController: UIViewController, UIScrollViewDelegate, UIImagePick
             
         })
     }
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return postPicImageView
+    @IBAction func savePhoto(_ sender: Any) {
+        let imageData = UIImagePNGRepresentation(postPicImageView.image!)
+        let compresedImage = UIImage(data: imageData!)
+        UIImageWriteToSavedPhotosAlbum(compresedImage!, nil, nil, nil)
+        
+        let alert = UIAlertController(title: "Saved", message: "Your image has been saved", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    
     }
 }
