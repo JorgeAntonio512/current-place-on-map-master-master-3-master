@@ -44,7 +44,6 @@ class PeoplezProfilesViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // print(value)
         name.text = value
         relstatus.text = relVal
         gender.text = genVal
@@ -67,12 +66,7 @@ class PeoplezProfilesViewController: UITableViewController {
                     if snapshot.exists() {
                         self.addFriendBtn.isHidden = true
                         self.addFriendPic.isHidden = true
-                        print("FRIEND ALREADY EXISTS (this is not AddFriend)!")
                     } else {
-                       // self.unfriendPic.isHidden = true
-                       // self.unfriendBtn.isHidden = true
-                        print("FRIEND DOES NOT EXIST! ESTABLISHING FRIENDSHIP:")
-                        //Database.database().reference().child("users").child(FirebaseUid!).child("friends").childByAutoId().updateChildValues(data)
                     }
                 }) { (error) in
                     print(error.localizedDescription)
@@ -154,7 +148,6 @@ class PeoplezProfilesViewController: UITableViewController {
         if proPicVal != "" {
             
             // Create a reference to the file you want to download
-            //let islandRef = storageRef.child(forURL: proPicVal)
             let islandRef = Storage.storage().reference(forURL: proPicVal)
             // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
             islandRef.getData(maxSize: 10 * 1024 * 1024) { data, error in
@@ -192,13 +185,10 @@ class PeoplezProfilesViewController: UITableViewController {
             let username = name.text
             Database.database().reference().child("users").child(FirebaseUid!).child("friends").queryOrdered(byChild: "name").queryEqual(toValue: username).observeSingleEvent(of: .value, with: { (snapshot) in
                 if snapshot.exists() {
-                    print("FRIEND ALREADY EXISTS!")
                 } else {
-                    print("FRIEND DOES NOT EXIST! ESTABLISHING FRIENDSHIP:")
                     Database.database().reference().child("users").child(FirebaseUid!).child("friends").childByAutoId().updateChildValues(data)
                     self.addFriendBtn.isHidden = true
                     self.addFriendPic.isHidden = true
-                //self.dismiss(animated: true, completion: nil)
                 }
             }) { (error) in
                 print(error.localizedDescription)

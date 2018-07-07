@@ -77,13 +77,8 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
             let username = self.currentUser?.name
             Database.database().reference().child("users").child(FirebaseUid!).child("friends").queryOrdered(byChild: "name").queryEqual(toValue: username).observeSingleEvent(of: .value, with: { (snapshot) in
                 if snapshot.exists() {
-                    print("FRIEND ALREADY EXISTS!")
                 } else {
-                    print("FRIEND DOES NOT EXIST! ESTABLISHING FRIENDSHIP:")
                     Database.database().reference().child("users").child(FirebaseUid!).child("friends").childByAutoId().updateChildValues(data)
-                    //self.addFriendBtn.isHidden = true
-                    //self.addFriendPic.isHidden = true
-                    //self.dismiss(animated: true, completion: nil)
                 }
             }) { (error) in
                 print(error.localizedDescription)
@@ -340,25 +335,17 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
         let keyChain = DataService().keyChain
         if keyChain.get("uid") != nil {
             let FirebaseUid = keyChain.get("uid")
-            let data = ["friend": self.currentUser?.id, "name": currentUser?.name]
             
             
             let username = currentUser?.name
             Database.database().reference().child("users").child(FirebaseUid!).child("friends").queryOrdered(byChild: "name").queryEqual(toValue: username).observeSingleEvent(of: .value, with: { (snapshot) in
                 if snapshot.exists() {
                     self.navigationItem.rightBarButtonItem = nil
-                    print("FRIEND ALREADY EXISTS (this is not AddFriend)!")
                 } else {
-                    // self.unfriendPic.isHidden = true
-                    // self.unfriendBtn.isHidden = true
-                    print("FRIEND DOES NOT EXIST! ESTABLISHING FRIENDSHIP:")
-                    //Database.database().reference().child("users").child(FirebaseUid!).child("friends").childByAutoId().updateChildValues(data)
                 }
             }) { (error) in
                 print(error.localizedDescription)
             }
-            
-            //self.performSegue(withIdentifier: "toFriendsList", sender: self)
         }
     }
     override func viewWillDisappear(_ animated: Bool) {

@@ -19,7 +19,6 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     
-   // @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pagePostImage: UIImageView!
     @IBOutlet weak var pagePostText: UITextView!
     @IBOutlet weak var leaveAcomment: KMPlaceholderTextView!
@@ -48,12 +47,8 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
         leaveAcomment.layer.borderColor = UIColor.blue.cgColor
         commentBtn.layer.borderColor = UIColor.blue.cgColor
         
-//        scrollView.delegate = self
-//        scrollView.maximumZoomScale = 10.0
-        
         
         if pagePostPics == "none"  {
-           // scrollView.isHidden = true
             pagePostImage.isHidden = true
             pagePostText.text = pagePosts
         }
@@ -73,7 +68,6 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
             })
         }
         //Print user id from (User's device local storage):
-        //let keyChain = DataService().keyChain
         let keyChain = DataService().keyChain
         if keyChain.get("uid") != nil {
             let FirebaseUid = keyChain.get("uid")
@@ -83,8 +77,6 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
         FirebaseMessageRefName.observe(.value) { (snap: DataSnapshot) in
             self.namedname = (snap.value as AnyObject).description
             
-            print(self.namedname! + "hell no it works!")
-            //self.Namename.text = profileName
         }
         }
     }
@@ -176,11 +168,6 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
        
     }
     
-    
-//    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-//
-//        return pagePostImage
-//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140.0

@@ -63,7 +63,6 @@ class MenuViewController: UITableViewController {
             print("Facebook loggedout")
             DataService().keyChain.delete("uid")
             self.performSegue(withIdentifier: "backtoBegin", sender: nil)
-            //dismiss(animated: true, completion: nil)
         
         
         }))
@@ -74,11 +73,6 @@ class MenuViewController: UITableViewController {
         }))
         self.present(actionsheet, animated: true, completion:{})
         
-                
-        
-              //  myVC?.present(actionsheet, animated: true, completion: nil)
-        
-        
     }
     @objc func tapActionzz() -> Void {
         print("you are here in tapActionzz")
@@ -86,11 +80,6 @@ class MenuViewController: UITableViewController {
         //Write value from Firebase database to the label:
         FirebaseMessageRef1.observe(.value) { (snap: DataSnapshot) in
             let webpage = snap.value as! String
-            
-            //let myURL = URL(string: webpage)
-            //let myRequest = URLRequest(url: myURL!)
-            //self.webView.load(myRequest)
-            //
             guard let url = URL(string: webpage) else {
                 return //be safe
             }
@@ -109,11 +98,6 @@ class MenuViewController: UITableViewController {
         //Write value from Firebase database to the label:
         FirebaseMessageRef1.observe(.value) { (snap: DataSnapshot) in
             let webpage = snap.value as! String
-            
-            //let myURL = URL(string: webpage)
-            //let myRequest = URLRequest(url: myURL!)
-            //self.webView.load(myRequest)
-            //
             guard let url = URL(string: webpage) else {
                 return //be safe
             }
@@ -132,11 +116,6 @@ class MenuViewController: UITableViewController {
         //Write value from Firebase database to the label:
         FirebaseMessageRef1.observe(.value) { (snap: DataSnapshot) in
             let webpage = snap.value as! String
-            
-            //let myURL = URL(string: webpage)
-            //let myRequest = URLRequest(url: myURL!)
-            //self.webView.load(myRequest)
-            //
             guard let url = URL(string: webpage) else {
                 return //be safe
             }
@@ -148,15 +127,4 @@ class MenuViewController: UITableViewController {
             }
         }
     }
-
-    
-
-
-    
-    
-//    @IBAction func onEmailButtonWasPressed(_ sender: Any) {
-//    UIApplication.shared.open(URL(string: "mailto:austintallcommunity@gmail.com")! as URL, options: [:], completionHandler: nil)
-//}
-
-
 }

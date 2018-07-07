@@ -18,7 +18,6 @@ class openNotificationSettingsViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
     }
     @IBAction func pressedIt(_ sender: AnyObject) {
-        print("chyea chyea")
         let path = UIApplicationOpenSettingsURLString
         if let settingsURL = URL(string: path), UIApplication.shared.canOpenURL(settingsURL) {
             UIApplication.shared.openURL(settingsURL)
@@ -26,23 +25,17 @@ class openNotificationSettingsViewController: UIViewController {
     }
     
     @IBAction func closeNotificationSettings(_ sender: Any) {
-    
-   
-    
-    
+        
                 let current = UNUserNotificationCenter.current()
         
                 current.getNotificationSettings(completionHandler: { (settings) in
                     if settings.authorizationStatus == .notDetermined {
                         // Notification permission has not been asked yet, go for it!
-                        print ("FIND OUT!!")
                     }
         
                     if settings.authorizationStatus == .denied {
                         // Notification permission was previously denied, go to settings & privacy to re-enable
                         DispatchQueue.main.async(execute: {
-                            print ("it's denied, from openNotificationSettings!")
-                            //self.performSegue(withIdentifier: "backAgain", sender: self)
                             self.performSegue(withIdentifier: "awayFromNotificationSettings", sender: self)
                         })
                     }

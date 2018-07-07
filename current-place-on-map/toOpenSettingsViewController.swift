@@ -32,22 +32,18 @@ class toOpenSettingsViewController: UIViewController {
     
     @IBAction func closePressed(_ sender: Any) {
         if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse){
-                    print("heyheyhey")
                     DispatchQueue.main.async {
                         // Update UI
                         self.navigationController?.popViewController(animated: true)
                     }
                 }
                 else if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.restricted){
-                    print("Location access was restricted.")
                     performSegue(withIdentifier: "awayFromOpenSetting", sender: self)
                 }
                 else if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.denied){
-                    print("User denied access to location.")
                     performSegue(withIdentifier: "awayFromOpenSetting", sender: self)
                 }
                 else if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.notDetermined){
-                    print("Location status not determined. your face!!")
                 }
                 else{
                     print("not getting location")

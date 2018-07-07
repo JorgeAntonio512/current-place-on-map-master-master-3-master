@@ -82,11 +82,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     
                     let dict = snap.value as? [String:AnyObject] // the value is a dict
                     
-                    let name = dict!["name"] as? String
-                    let food = dict!["height"] as? String
                     let key = snap.key
-                    print(key)
-                    print("\(name) loves \(food)")
                     self.usersArray.append(dict!)
                     print(self.usersArray)
                     self.keyArray.append(key)

@@ -67,92 +67,6 @@ class FriendsViewController: UITableViewController {
         //tableView.tableHeaderView = searchController.searchBar
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
-        
-        
-        
-        
-        
-        
-        
-//        //Print user id from (User's device local storage):
-//        let keyChain = DataService().keyChain
-//        if keyChain.get("uid") != nil {
-//            let FirebaseUid = keyChain.get("uid")
-//            print("KEYCHAIN USER id: \(FirebaseUid!)")
-//            //set up firebase references:
-//        let ref = Database.database().reference().child("users/\(FirebaseUid!)/friends")
-//
-//        ref.observeSingleEvent(of: .value, with: { snapshot in
-//
-//            if ( snapshot.value is NSNull ) {
-//                print("not found tool")
-//            } else {
-//
-//
-//
-//                for child in (snapshot.children) {
-//
-//
-//                    let snap = child as! DataSnapshot //each child is a snapshot
-//
-//                    let dict = snap.value as? [String:AnyObject] // the value is a dict
-//
-//                    let name = dict!["name"] as? String
-//                   // let food = dict!["height"] as? String
-//
-//                    let friendKey = snap.key
-//                    //print(key)
-//                    print("\(name) loves your facez")
-//
-//
-//                    let reffriend = Database.database().reference().child("users").queryOrdered(byChild: "name").queryEqual(toValue: name)
-//                    //.childByAutoId().queryEqual(toValue: "SDU93mBprghiEAmBFYHfA3MuaNF2")
-//
-//                     reffriend.observe(.value, with: { snapshot in
-//
-//                        if ( snapshot.value is NSNull ) {
-//                            print("not found")
-//                        } else {
-//
-//
-//
-//                            for child in (snapshot.children) {
-//
-//                        let snape = child as! DataSnapshot //each child is a snapshot
-//
-//                        let dicte = snape.value as? [String:AnyObject] // the value is a dict
-//
-//                        let name = dict!["name"] as? String
-//                        let food = dict!["height"] as? String
-//
-//                        let key = snape.key
-//
-//                        //print(dicte)
-//
-//                        self.usersArray.append(dicte!)
-//                        //print(self.usersArray)
-//                        self.keyArray.append(key)
-//                        self.friendKeyArray.append(friendKey)
-//                            }
-//                            self.tableView.reloadData()
-//
-//                        }
-//
-//                     })
-//
-//
-//
-//                }
-//
-//            }
-//        })}
-        
-        
-        
-        
-        
-        
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -177,7 +91,6 @@ class FriendsViewController: UITableViewController {
         cell.separatorInset = .zero
         cell.accessoryType = .disclosureIndicator
         let userDict = self.usersArray[indexPath.row]
-       //cell.imageView?.image = #imageLiteral(resourceName: "notthere")
         
         let url = URL(string: userDict["profileImageURL"] as! String)
         let imagur = #imageLiteral(resourceName: "notthere")
@@ -195,28 +108,6 @@ class FriendsViewController: UITableViewController {
             //                  .disk - Got from disk cache
             // imageUrl: URL of the image
         })
-//        cell.imageView?.layer.cornerRadius = (image.size.width)/2
-//        cell.imageView?.layer.borderWidth = 1
-//
-//        cell.imageView?.layer.borderColor = UIColor.white.cgColor
-
-//
-//
-
-        
-        
-//        let islandRef = Storage.storage().reference(forURL: (userDict["profileImageURL"] as! String))
-//        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-//        islandRef.getData(maxSize: 10 * 1024 * 1024) { data, error in
-//            if let error = error {
-//                // Uh-oh, an error occurred!
-//            } else {
-//                // Data for "images/island.jpg" is returned
-//                let image = UIImage(data: data!)
-//                cell.imageView?.image = image
-//
-//            }
-//        }
         
         
         cell.textLabel?.text = userDict["name"] as? String
@@ -247,31 +138,6 @@ class FriendsViewController: UITableViewController {
     }
     
     
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//
-//            if let keeyzy = self.keyArray[indexPath.row] {
-//
-//                let ref = FIRDatabase.database().reference().child("userExercises")
-//
-//                ref.queryOrdered(byChild: "exerciseName").queryEqual(toValue: exerciseName).observe(.childAdded, with: { (snapshot) in
-//
-//                    snapshot.ref.removeValue(completionBlock: { (error, reference) in
-//                        if error != nil {
-//                            print("There has been an error:\(error)")
-//                        }
-//                    })
-//
-//                })
-//
-//            }
-//
-//            exercises.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .left)
-//        }
-//    }
-    
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let dict = self.usersArray[indexPath.row]
         let keysus = self.keyArray[indexPath.row]
@@ -294,7 +160,6 @@ class FriendsViewController: UITableViewController {
                 let image = UIImage(data: data!)
                 
                 let user = User.init(name: self.yourValue as! String, email: self.yourHeight as! String, id: self.keyzy!, profilePic: image!)
-                print(self.keyzy! + "this is the keyzy fosheezy!")
                 self.selectedUser = user
                 self.performSegue(withIdentifier: "toProfilezz", sender: self)
                 
@@ -337,11 +202,9 @@ class FriendsViewController: UITableViewController {
                         let dict = snap.value as? [String:AnyObject] // the value is a dict
                         
                         let name = dict!["name"] as? String
-                        // let food = dict!["height"] as? String
                         
                         let friendKey = snap.key
-                        //print(key)
-                        print("\(name) loves your facez")
+
                         
                         
                         let reffriend = Database.database().reference().child("users").queryOrdered(byChild: "name").queryEqual(toValue: name)
@@ -361,15 +224,9 @@ class FriendsViewController: UITableViewController {
                                     
                                     let dicte = snape.value as? [String:AnyObject] // the value is a dict
                                     
-                                    let name = dict!["name"] as? String
-                                    let food = dict!["height"] as? String
-                                    
                                     let key = snape.key
                                     
-                                    //print(dicte)
-                                    
                                     self.usersArray.append(dicte!)
-                                    //print(self.usersArray)
                                     self.keyArray.append(key)
                                     self.friendKeyArray.append(friendKey)
                                 }

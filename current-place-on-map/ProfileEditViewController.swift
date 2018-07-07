@@ -255,8 +255,6 @@ class ProfileEditViewController: UITableViewController {
         bottomlineView6.layer.borderColor = UIColor.lightGray.cgColor
         self.saveCell.addSubview(bottomlineView6)
         
-        //self.navigationController?.setNavigationBarHidden(true, animated: true)
-        
         let keyChain = DataService().keyChain
         if keyChain.get("uid") != nil {
             let FirebaseUid = keyChain.get("uid")
@@ -277,9 +275,9 @@ class ProfileEditViewController: UITableViewController {
                 
                 
                 
-                let islandRef = Storage.storage().reference(forURL: profilePic!)
+                
             // get a reference to our file store
-            //let storeRef = Storage.storage().reference(forURL: Constants.fileStoreURL).child("profile_image").child(uid!)
+            let islandRef = Storage.storage().reference(forURL: profilePic!)
             // Download the data, assuming a max size of 1MB (you can change this as necessary)
             islandRef.getData(maxSize: 10 * 1024 * 1024) { (data, error) -> Void in
                 // Create a UIImage, add it to the array
@@ -384,8 +382,6 @@ class ProfileEditViewController: UITableViewController {
                                 if let profileImage = self.profileImageView.image, let imageData = UIImageJPEGRepresentation(profileImage, 0.5) {let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
                                     
                                     let loadingIndicator = NVActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50), type: NVActivityIndicatorType(rawValue: 26), color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))
-                                    //loadingIndicator.hidesWhenStopped = true
-                                    //loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
                                     loadingIndicator.startAnimating();
                                     
                                     alert.view.addSubview(loadingIndicator)
@@ -404,14 +400,6 @@ class ProfileEditViewController: UITableViewController {
                                         loadingIndicator.stopAnimating()
                                         
                                         self.navigationController?.popViewController(animated: true)
-//                                    let alertController = UIAlertController(title: "Your data has been saved!", message:
-//                                        "Please press the Profile (back) button!", preferredStyle: UIAlertControllerStyle.alert)
-//                                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-//
-//                                    self.present(alertController, animated: true, completion: nil)
-                                    
-                                    
-                                    
                                 }, onError:{ _ in })
                                 }
                                 else {

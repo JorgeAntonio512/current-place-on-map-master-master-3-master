@@ -33,11 +33,6 @@ class EnableLocationSharingViewController: UIViewController {
         
         self.tabBarController?.tabBar.isHidden = true;
         self.navigationItem.hidesBackButton = true
-     
-        print("yoyoyo")
-        
-
-        
     }
 
     

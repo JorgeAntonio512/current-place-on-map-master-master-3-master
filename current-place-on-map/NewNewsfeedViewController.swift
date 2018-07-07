@@ -91,7 +91,6 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
                 
                 
                 let islandRef = Storage.storage().reference(forURL: self.profilePic!)
-                // let storeRef = Storage.storage().reference(forURL: Constants.fileStoreURL).child("profile_image").child(uid!)
                 // Download the data, assuming a max size of 1MB (you can change this as necessary)
                 islandRef.getData(maxSize: 10 * 1024 * 1024) { (data, error) -> Void in
                     // Create a UIImage, add it to the array
@@ -114,7 +113,7 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidAppear(_ animated: Bool) {
         
         usersArray.removeAll()
-            //self.tableView.reloadData()
+        self.tableView.reloadData()
         updatePosts()
      
         
@@ -138,9 +137,7 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell     {
-        //let cell: CustomTableViewCell = CustomTableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
         let userDict = self.usersArray[indexPath.row]
-        //let cell: PostImageCell = PostImageCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostImageCell", for: indexPath) as! PostImageCell
         let imageURL = URL(string: userDict["postPics"] as! String)
         cell.postImageView.kf.setImage(with: imageURL)
@@ -187,8 +184,6 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
         dateFormatter.timeZone = TimeZone(abbreviation: "CST") //Set timezone that you want
         dateFormatter.locale = NSLocale.current
         dateFormatter.dateFormat = "h:mm a, EEEE, MMM d, yyyy" //Specify your format that you want
-        //let timeString = "\(dateFormatter.string(from: NSDate(timeIntervalSince1970: userDict["timestamp"] as! TimeInterval) as Date))"
-        
         let timeString = (NSDate(timeIntervalSince1970: userDict["timestamp"] as! TimeInterval).timeAgoSinceNow()) as  String
         
        
@@ -240,17 +235,9 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
                     let snap = child as! DataSnapshot //each child is a snapshot
                     
                     let dict = snap.value as? [String:AnyObject] // the value is a dict
-                    
-                    //let name = dict!["posts"] as? String
-                    //let food = dict!["height"] as? String
+                 
                     let key = snap.key
-                    print(key)
-                    //print("\(name) loves \(food)")
-                    //self.usersArray.append(dict!)
                     self.usersArray.insert(dict!, at: 0)
-                    print(self.usersArray)
-                    //self.postsName.text = dict!["posts"] as? String
-                    //self.keyArray.append(key)
                 }
                 self.tableView.reloadData()
             }
@@ -295,8 +282,6 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:[String : Any]) {
         let tempImage:UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        //imagePreview.image  = tempImage
-        //self.writeAboutInFirebase(about: self.post.text!)
         
         
         
@@ -310,28 +295,15 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
             let imageData = UIImageJPEGRepresentation(tempImage, 0.1)
             storageRef.putData(imageData!, metadata: nil, completion: { (metadata, err) in
                 if err == nil {
-                    // let path = metadata?.downloadURL()?.absoluteString
-                    
-                    
                     storageRef.downloadURL { url, error in
                         if let error = error {
                             // Handle any errors
                         } else {
                             
                             let pathURL = url?.absoluteString
-                            //let pathString = pathURL?.path
                             self.setUserInformation(profileImageURL: pathURL!, profilePic: self.profilePic!)
                             self.usersArray.removeAll()
                             self.updatePosts()
-                            // Get the download URL for 'images/stars.jpg'
-                            //                        let values = ["name": withName, "email": email, "profilePicLink": url?.absoluteString] as [String : Any]
-                            //                        Database.database().reference().child("users").child((user?.user.uid)!).child("credentials").updateChildValues(values, withCompletionBlock: { (errr, _) in
-                            //                            if errr == nil {
-                            //                                let userInfo = ["email" : email, "password" : password]
-                            //                                UserDefaults.standard.set(userInfo, forKey: "userInformation")
-                            //                                completion(true)
-                            //  }
-                            //})
                         }
                     }
                     
@@ -363,12 +335,9 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
             
             let ref = Database.database().reference()
             let userReference = ref.child("posts").childByAutoId()
-            //let newUserReference = userReference.child(uid!)
-            //let FirebaseMessageRef = Database.database().reference().child("posts").childByAutoId()
             //save the message in Firebase
             let interval = NSDate().timeIntervalSince1970
             userReference.updateChildValues(["/postPics/": profileImageURL, "/posts/": "none", "/profilePics/": profilePic, "/name/": nameyname as Any, "/timestamp/": interval])
-            //userReference.updateChildValues(["posts": profileImageURL])
         }
         
     }

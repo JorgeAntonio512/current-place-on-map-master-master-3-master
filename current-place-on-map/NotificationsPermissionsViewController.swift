@@ -54,7 +54,6 @@ class NotificationsPermissionsViewController: UIViewController {
                                 let FirebaseMessageRef = Database.database().reference().child("tokens").childByAutoId()
                                 //save the message in Firebase
                                 FirebaseMessageRef.updateChildValues(["/token/": refreshedToken])
-                                //FirebaseMessageRef.updateChildValues(["/profilePics/": profilePics])
                             
                         
                         

@@ -395,7 +395,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                             
                         })
                     }
-                    //self.performSegue(withIdentifier: "SignIn", sender: nil)
                 }
             }
         }

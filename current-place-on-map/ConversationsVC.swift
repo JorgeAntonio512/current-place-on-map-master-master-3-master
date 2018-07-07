@@ -23,11 +23,6 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     @IBOutlet weak var alertBottomConstraint: NSLayoutConstraint!
-//    lazy var leftButton: UIBarButtonItem = {
-//        let image = UIImage.init(named: "default profile")?.withRenderingMode(.alwaysOriginal)
-//        let button  = UIBarButtonItem.init(image: image, style: .plain, target: self, action: #selector(ConversationsVC.showProfile))
-//        return button
-//    }()
     lazy var rightButton: UIBarButtonItem = {
         let icon = UIImage.init(named: "compose")?.withRenderingMode(.alwaysOriginal)
         let button = UIBarButtonItem.init(image: icon!, style: .plain, target: self, action: #selector(ConversationsVC.showContacts))
@@ -49,12 +44,9 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: navigationTitleFont, NSAttributedStringKey.foregroundColor: UIColor.white]
         // notification setup
         NotificationCenter.default.addObserver(self, selector: #selector(self.pushToUserMesssages(notification:)), name: NSNotification.Name(rawValue: "showUserMessages"), object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.showEmailAlert), name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
         //right bar button
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white;
         self.navigationItem.rightBarButtonItem = self.rightButton
-        //left bar button image fetching
-        //self.navigationItem.leftBarButtonItem = self.leftButton
         self.tableView.tableFooterView = UIView.init(frame: CGRect.zero)
         if let id = Auth.auth().currentUser?.uid {
             User.info(forUserID: id, completion: { [weak weakSelf = self] (user) in
@@ -70,7 +62,6 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 let finalImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!.withRenderingMode(.alwaysOriginal)
                 UIGraphicsEndImageContext()
                 DispatchQueue.main.async {
-                    //weakSelf?.leftButton.image = finalImage
                     weakSelf = nil
                 }
             })
@@ -116,17 +107,6 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         let info = ["viewType" : ShowExtraView.contacts]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showExtraView"), object: nil, userInfo: info)
     }
-    
-    //Show EmailVerification on the bottom
-//    @objc func showEmailAlert() {
-//        User.checkUserVerification {[weak weakSelf = self] (status) in
-//            status == true ? (weakSelf?.alertBottomConstraint.constant = -40) : (weakSelf?.alertBottomConstraint.constant = 0)
-//            UIView.animate(withDuration: 0.3) {
-//                weakSelf?.view.layoutIfNeeded()
-//                weakSelf = nil
-//            }
-//        }
-//    }
     
     //Shows Chat viewcontroller with given user
     @objc func pushToUserMesssages(notification: NSNotification) {
@@ -292,8 +272,6 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         current.getNotificationSettings(completionHandler: { (settings) in
             if settings.authorizationStatus == .notDetermined {
                 // Notification permission has not been asked yet, go for it!
-                print ("FIND OUT!!")
-                
                 DispatchQueue.main.async() {
                     self.performSegue(withIdentifier: "toNotificationPerm", sender: self)
                 }
@@ -302,7 +280,6 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             if settings.authorizationStatus == .denied {
                 // Notification permission was previously denied, go to settings & privacy to re-enable
                 DispatchQueue.main.async(execute: {
-                    print ("mother fucker")
                     self.performSegue(withIdentifier: "toOpenNotificationz", sender: self)
                 })
             }
@@ -310,22 +287,14 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             if settings.authorizationStatus == .authorized {
                 // Notification permission was already granted
                 DispatchQueue.main.async(execute: {
-                    print ("chyea boi!!")
                     self.fetchData()
                 })
             }
         })
-        //self.showEmailAlert()
-      
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
-        //testForNotifications()
-        
-        
     }
     
     func testForNotifications() {
@@ -334,7 +303,6 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         current.getNotificationSettings(completionHandler: { (settings) in
             if settings.authorizationStatus == .notDetermined {
                 // Notification permission has not been asked yet, go for it!
-                print ("FIND OUT!!")
                 
                 DispatchQueue.main.async() {
                     self.performSegue(withIdentifier: "toNotificationPerm", sender: self)
@@ -344,15 +312,7 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             if settings.authorizationStatus == .denied {
                 // Notification permission was previously denied, go to settings & privacy to re-enable
                 DispatchQueue.main.async(execute: {
-                    print ("mother fucker")
                     self.performSegue(withIdentifier: "toOpenNotificationz", sender: self)
-                })
-            }
-            
-            if settings.authorizationStatus == .authorized {
-                // Notification permission was already granted
-                DispatchQueue.main.async(execute: {
-                    print ("chyea boi!!")
                 })
             }
         })

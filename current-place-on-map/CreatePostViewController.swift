@@ -40,7 +40,6 @@ class CreatePostViewController: UIViewController {
                 
                 
                 let islandRef = Storage.storage().reference(forURL: self.profilePics!)
-                // let storeRef = Storage.storage().reference(forURL: Constants.fileStoreURL).child("profile_image").child(uid!)
                 // Download the data, assuming a max size of 1MB (you can change this as necessary)
                 islandRef.getData(maxSize: 10 * 1024 * 1024) { (data, error) -> Void in
                     // Create a UIImage, add it to the array
@@ -52,8 +51,6 @@ class CreatePostViewController: UIViewController {
                     self.profilePic.frame = CGRect(x: 25, y: 60, width: 50, height: 50)
                     self.profilePic.layer.cornerRadius = 25
                     self.profilePic.clipsToBounds = true
-                    //                self.pic.center = CGPoint(x: self.picCell.contentView.bounds.size.width/2,y: self.picCell.contentView.bounds.size.height/2)
-                    //
                     
                 }}
         }}
@@ -68,7 +65,6 @@ class CreatePostViewController: UIViewController {
             //save the message in Firebase
             let interval = NSDate().timeIntervalSince1970
             FirebaseMessageRef.updateChildValues(["/posts/": about, "/postPics/": "none", "/profilePics/": profilePics, "/name/": namey, "/timestamp/": interval])
-            //FirebaseMessageRef.updateChildValues(["/profilePics/": profilePics])
         }
     }
     
@@ -85,11 +81,6 @@ class CreatePostViewController: UIViewController {
             self.writeAboutInFirebase(about: self.post.text!, profilePics: profilePics!, namey: self.Namename.text!)
          
             navigationController?.popViewController(animated: true)
-//        let alertController = UIAlertController(title: "Your post has been shared!", message:
-//            "Please press the \"Back\" button!", preferredStyle: UIAlertControllerStyle.alert)
-//        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-//        
-//        self.present(alertController, animated: true, completion: nil)
         }
     }
     
