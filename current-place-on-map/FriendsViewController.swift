@@ -186,7 +186,7 @@ class FriendsViewController: UITableViewController {
             ref.observeSingleEvent(of: .value, with: { snapshot in
                 
                 if ( snapshot.value is NSNull ) {
-                    print("not found tool")
+                    print("not found")
                 } else {
                     
                     self.usersArray.removeAll()

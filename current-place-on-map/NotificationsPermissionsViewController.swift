@@ -34,15 +34,11 @@ class NotificationsPermissionsViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.hidesBackButton = true
-        print("computerzz?")
-        
     }
     
 
     
     @IBAction func enabledz(_ sender: Any) {
-    
-    print("computer?")
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
             // Enable or disable features based on authorization.

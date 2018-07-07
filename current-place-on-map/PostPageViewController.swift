@@ -90,7 +90,6 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
             let query = ref.queryOrdered(byChild: "timestamp").queryEqual(toValue: thestampp)
                 
                 query.observeSingleEvent(of: .childAdded) { (snapshot) in
-                    print("FRIEND ALREADY EXISTS!")
                     let newRef = snapshot.ref
                     let interval = NSDate().timeIntervalSince1970
                     newRef.child("comments").childByAutoId().updateChildValues(["/comment/": about, "/name/": self.namedname as Any, "/timestamp/": interval, "/profilePic/": self.pageProfilePics as Any])        }
@@ -154,7 +153,6 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
                             
                                 
                             self.commentArray.insert(dict!, at: 0)
-                            print("THIS IS THE AWESOME", self.commentArray)
                         }
                          self.tableView.reloadData()
                         

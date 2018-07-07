@@ -173,7 +173,6 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         switch self.items.count {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Empty Cell")!
-            print ("THIS IS EMPTY!!!")
             self.alert.dismiss(animated: false, completion: nil)
             self.loadingIndicator.stopAnimating()
             return cell

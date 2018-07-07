@@ -77,9 +77,6 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
             let FirebaseMessageRefName = Database.database().reference().child("users/\(FirebaseUid!)/name")
             FirebaseMessageRefName.observe(.value) { (snap: DataSnapshot) in
                 self.nameyname = (snap.value as AnyObject).description
-                
-                print(self.nameyname! + "hell no it works!")
-                //self.Namename.text = profileName
             }
             
             
@@ -197,7 +194,6 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
             cell.postText.text = userDict["posts"] as? String
         }
         cell.detailTextLabel?.text = userDict["height"] as? String
-        print("you like CDs??")
         //cell.textLabel?.text = self.filteredCakes[indexPath.row].name
         //cell.detailTextLabel?.text = self.filteredCakes[indexPath.row].height
         
@@ -212,9 +208,8 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
         posts = dict["posts"] as? String
         profilePics = dict["profilePics"] as? String
         timestampzz = dict["timestamp"] as? TimeInterval
-        print("this is the STAMP:", timestampzz as Any)
 
-                self.performSegue(withIdentifier: "toPostPage", sender: self)
+        self.performSegue(withIdentifier: "toPostPage", sender: self)
         
     }
     

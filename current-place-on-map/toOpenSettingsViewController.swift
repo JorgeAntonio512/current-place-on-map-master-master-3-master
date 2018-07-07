@@ -22,7 +22,6 @@ class toOpenSettingsViewController: UIViewController {
     
     
     @IBAction func buttonPressed(sender: AnyObject) {
-        print("chyea chyea")
         let path = UIApplicationOpenSettingsURLString
         if let settingsURL = URL(string: path), UIApplication.shared.canOpenURL(settingsURL) {
             UIApplication.shared.openURL(settingsURL)
