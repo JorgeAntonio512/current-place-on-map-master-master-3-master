@@ -145,8 +145,8 @@ class Message {
     class func send(message: Message, toID: String, completion: @escaping (Bool) -> Swift.Void)  {
         if let currentUserID = Auth.auth().currentUser?.uid {
             
-            let FirebaseMessageRef = Database.database().reference().child("users").child(toID)
-            FirebaseMessageRef.updateChildValues(["/newMessage/": "yes"])
+         Database.database().reference().child("users").child(toID).child("newMessage").removeValue()
+         Database.database().reference().child("users").child(toID).child("newMessage").setValue("newMSG")
             
             
             switch message.type {
