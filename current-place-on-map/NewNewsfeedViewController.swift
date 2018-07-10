@@ -40,6 +40,20 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
         definesPresentationContext = true
         //tableView.tableHeaderView = searchController.searchBar
         
+        
+        if let refreshedToken = InstanceID.instanceID().token() {
+            print("InstanceID token: \(refreshedToken)")
+            
+            let keyChain = DataService().keyChain
+            if keyChain.get("uid") != nil {
+                let FirebaseUid = keyChain.get("uid")
+                //set up firebase references:
+                let FirebaseMessageRef = Database.database().reference()
+                //save the message in Firebase
+                FirebaseMessageRef.updateChildValues(["/users/\(FirebaseUid!)/token": refreshedToken])
+            }}
+        
+        
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         tableView.rowHeight = UITableViewAutomaticDimension

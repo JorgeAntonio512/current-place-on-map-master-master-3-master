@@ -67,9 +67,7 @@ class MapkitViewController: UIViewController {
                     
                 }
             }
-            
         })
-
     }
     
 
