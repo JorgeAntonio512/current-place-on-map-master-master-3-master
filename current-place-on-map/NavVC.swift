@@ -33,6 +33,7 @@ class NavVC: UINavigationController, UICollectionViewDelegate, UICollectionViewD
     func customization() {
         //DarkView customization
         self.view.addSubview(self.darkView)
+        self.navigationBar.topItem?.title = "Austin Tall Community"
         self.darkView.backgroundColor = UIColor.black
         self.darkView.alpha = 0
         self.darkView.translatesAutoresizingMaskIntoConstraints = false

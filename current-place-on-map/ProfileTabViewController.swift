@@ -16,13 +16,13 @@ class ProfileTabViewController: UIViewController, WKUIDelegate, WKNavigationDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.navigationItem.hidesBackButton = true;
-        self.navigationItem.hidesBackButton = true
+        //self.tabBarController?.navigationItem.hidesBackButton = true;
+        //self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.tintColor = UIColor.white
       
     }
     override func viewDidAppear(_ animated: Bool) {
         
-        self.navigationItem.hidesBackButton = true
+       // self.navigationItem.hidesBackButton = true
     }
 }
