@@ -37,6 +37,11 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
        super.viewDidLoad()
         
+        let icon = UIImage.init(named: "back")?.withRenderingMode(.alwaysOriginal)
+        let backButton = UIBarButtonItem.init(image: icon!, style: .plain, target: self, action: #selector(self.dismissSelf))
+        self.navigationItem.leftBarButtonItem = backButton
+        
+        self.navigationItem.title = "Austin Tall Community"
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -84,6 +89,11 @@ class PostPageViewController: UIViewController, UITableViewDataSource, UITableVi
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         pagePostImage.isUserInteractionEnabled = true
         pagePostImage.addGestureRecognizer(tapGestureRecognizer)
+    }
+    @objc func dismissSelf() {
+        if let navController = self.navigationController {
+            navController.popViewController(animated: true)
+        }
     }
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)

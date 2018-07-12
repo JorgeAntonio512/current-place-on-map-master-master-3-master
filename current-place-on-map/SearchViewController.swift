@@ -48,7 +48,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let navigationTitleFont = UIFont(name: "AvenirNext-Regular", size: 18)!
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: navigationTitleFont, NSAttributedStringKey.foregroundColor: UIColor.white]
         //filteredData = usersArray
         tableView.delegate = self
         tableView.dataSource = self

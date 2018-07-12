@@ -22,7 +22,8 @@ class MapkitViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let navigationTitleFont = UIFont(name: "AvenirNext-Regular", size: 18)!
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: navigationTitleFont, NSAttributedStringKey.foregroundColor: UIColor.white]
         mapView.userTrackingMode = .follow
         var region = MKCoordinateRegion()
         region.span = MKCoordinateSpanMake(0.7, 0.7); //Zoom distance

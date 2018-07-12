@@ -77,5 +77,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(received remoteMessage: MessagingRemoteMessage) {
         print(remoteMessage.appData)
     }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        application.applicationIconBadgeNumber = 0
+    }
 }
 

@@ -40,7 +40,9 @@ class NewNewsfeedViewController: UIViewController, UITableViewDataSource, UITabl
         definesPresentationContext = true
         //tableView.tableHeaderView = searchController.searchBar
         
-        
+        let navigationTitleFont = UIFont(name: "AvenirNext-Regular", size: 18)!
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: navigationTitleFont, NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white;
         if let refreshedToken = InstanceID.instanceID().token() {
             print("InstanceID token: \(refreshedToken)")
             
