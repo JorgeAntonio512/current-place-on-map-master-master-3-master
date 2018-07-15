@@ -46,9 +46,21 @@ If you've been enjoying this app and would like to show your support, please con
         addChildViewController(controller)
         view.addSubview(controller.view)
         controller.didMove(toParentViewController: self)
+   
+        
+        let icon = UIImage.init(named: "back")?.withRenderingMode(.alwaysOriginal)
+        let backButton = UIBarButtonItem.init(image: icon!, style: .plain, target: self, action: #selector(self.dismissSelf))
+        self.navigationItem.leftBarButtonItem = backButton
+        
+        self.navigationItem.title = "Austin Tall Community"
     }
     
     
+    @objc func dismissSelf() {
+        if let navController = self.navigationController {
+            navController.popViewController(animated: true)
+        }
+    }
 }
 
 

@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.60.5</string>
+	<string>2.60.6</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -36,7 +36,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>33</string>
+	<string>34</string>
 	<key>FacebookAppID</key>
 	<string>400166857068801</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
@@ -60,13 +60,13 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Allow us to use camera to capture the image</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We&apos;ll show your current location on the map.</string>
+	<string>We'll show your current location on the map.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>This app uses your Microphone to allow Voice over IP communication with the Program Admin system</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app requires access to the photo library to upload photos.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>This app requires access to the photo library to download photos.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app requires access to the photo library to upload photos.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

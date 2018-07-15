@@ -26,6 +26,12 @@ class SuggestionTotalsViewController: UIViewController, WKUIDelegate, WKNavigati
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let icon = UIImage.init(named: "back")?.withRenderingMode(.alwaysOriginal)
+        let backButton = UIBarButtonItem.init(image: icon!, style: .plain, target: self, action: #selector(self.dismissSelf))
+        self.navigationItem.leftBarButtonItem = backButton
+        
+        self.navigationItem.title = "Austin Tall Community"
+        
         
         let FirebaseMessageRef1 = Database.database().reference().child("webpages/SurveyMonkeyVoteCount")
         //Write value from Firebase database to the label:
@@ -61,6 +67,12 @@ class SuggestionTotalsViewController: UIViewController, WKUIDelegate, WKNavigati
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         self.dismiss(animated: false, completion: nil)
         loadingIndicator.stopAnimating()
+    }
+    
+    @objc func dismissSelf() {
+        if let navController = self.navigationController {
+            navController.popViewController(animated: true)
+        }
     }
 }
 

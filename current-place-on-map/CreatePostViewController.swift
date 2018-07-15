@@ -20,6 +20,13 @@ class CreatePostViewController: UIViewController {
     var namey:String?
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        let icon = UIImage.init(named: "back")?.withRenderingMode(.alwaysOriginal)
+        let backButton = UIBarButtonItem.init(image: icon!, style: .plain, target: self, action: #selector(self.dismissSelf))
+        self.navigationItem.leftBarButtonItem = backButton
+        
+        self.navigationItem.title = "Austin Tall Community"
+        
         let keyChain = DataService().keyChain
         if keyChain.get("uid") != nil {
             let FirebaseUid = keyChain.get("uid")
@@ -83,7 +90,11 @@ class CreatePostViewController: UIViewController {
             navigationController?.popViewController(animated: true)
         }
     }
-    
+    @objc func dismissSelf() {
+        if let navController = self.navigationController {
+            navController.popViewController(animated: true)
+        }
+    }
 
 
 

@@ -52,7 +52,11 @@ class PeoplezProfilesViewController: UITableViewController {
         about.text = aboutVal
        
         
+        let icon = UIImage.init(named: "back")?.withRenderingMode(.alwaysOriginal)
+        let backButton = UIBarButtonItem.init(image: icon!, style: .plain, target: self, action: #selector(self.dismissSelf))
+        self.navigationItem.leftBarButtonItem = backButton
         
+        self.navigationItem.title = "Austin Tall Community"
         
             //Select the correct user
             let keyChain = DataService().keyChain
@@ -211,6 +215,11 @@ class PeoplezProfilesViewController: UITableViewController {
         }
     }
 
+    @objc func dismissSelf() {
+        if let navController = self.navigationController {
+            navController.popViewController(animated: true)
+        }
+    }
     
 }
 

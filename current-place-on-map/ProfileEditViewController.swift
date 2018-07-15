@@ -178,6 +178,12 @@ class ProfileEditViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let icon = UIImage.init(named: "back")?.withRenderingMode(.alwaysOriginal)
+        let backButton = UIBarButtonItem.init(image: icon!, style: .plain, target: self, action: #selector(self.dismissSelf))
+        self.navigationItem.leftBarButtonItem = backButton
+        
+        self.navigationItem.title = "Austin Tall Community"
+        
         self.hideKeyboard()
         
         
@@ -414,6 +420,11 @@ class ProfileEditViewController: UITableViewController {
                     }
                 }
             }
+        }
+    }
+    @objc func dismissSelf() {
+        if let navController = self.navigationController {
+            navController.popViewController(animated: true)
         }
     }
 }

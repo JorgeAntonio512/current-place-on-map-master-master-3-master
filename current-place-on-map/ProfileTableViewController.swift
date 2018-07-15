@@ -46,7 +46,7 @@ class ProfileTableViewController: UITableViewController {
         super.viewDidLoad()
         
         
-            
+  
             
         let toplineView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 1.0))
         toplineView.layer.borderWidth = 1.0
@@ -201,7 +201,7 @@ class ProfileTableViewController: UITableViewController {
             self.tableView.allowsSelection = false
         }
     }
-        
+   
 }
 
 

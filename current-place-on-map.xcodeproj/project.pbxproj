@@ -34,6 +34,7 @@
 		3D5B236D1FFEFC1B00E94FB4 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B236C1FFEFC1B00E94FB4 /* MenuViewController.swift */; };
 		3D60735720A0EB3600701B44 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D60735620A0EB3600701B44 /* CustomTableViewCell.swift */; };
 		3D669E6A20F0F55300666779 /* PostPicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D669E6920F0F55300666779 /* PostPicViewController.swift */; };
+		3D66BBB720F6E0A60027B7FB /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D66BBB620F6E0A60027B7FB /* FriendsListViewController.swift */; };
 		3D708F0C20C2BFEA005F0A04 /* PostImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D708F0B20C2BFEA005F0A04 /* PostImageCell.swift */; };
 		3D7199DA1FE6F95900BDDD4D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7199D91FE6F95900BDDD4D /* Constants.swift */; };
 		3D7199DD1FE6F9FD00BDDD4D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7199DC1FE6F9FD00BDDD4D /* AuthService.swift */; };
@@ -99,6 +100,7 @@
 		3D5B236C1FFEFC1B00E94FB4 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		3D60735620A0EB3600701B44 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		3D669E6920F0F55300666779 /* PostPicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPicViewController.swift; sourceTree = "<group>"; };
+		3D66BBB620F6E0A60027B7FB /* FriendsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
 		3D708F0B20C2BFEA005F0A04 /* PostImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageCell.swift; sourceTree = "<group>"; };
 		3D7199D91FE6F95900BDDD4D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3D7199DC1FE6F9FD00BDDD4D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				3DF14C9120CDEA6B005258E1 /* PostPageViewController.swift */,
 				3DF14C9320CDF057005258E1 /* PostCell.swift */,
 				3D669E6920F0F55300666779 /* PostPicViewController.swift */,
+				3D66BBB620F6E0A60027B7FB /* FriendsListViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				3D60735720A0EB3600701B44 /* CustomTableViewCell.swift in Sources */,
 				E50C79BB1E4CFDE9008ECCEB /* AppDelegate.swift in Sources */,
 				3D5B236D1FFEFC1B00E94FB4 /* MenuViewController.swift in Sources */,
+				3D66BBB720F6E0A60027B7FB /* FriendsListViewController.swift in Sources */,
 				3D3E69CE2002EFFD00BC251A /* CreateProfileViewController.swift in Sources */,
 				3D15C1E4200D806300C09794 /* Message.swift in Sources */,
 				3D15C1E5200D806300C09794 /* Conversation.swift in Sources */,
