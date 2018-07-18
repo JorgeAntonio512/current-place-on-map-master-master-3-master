@@ -60,7 +60,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Allow us to use camera to capture the image</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We'll show your current location on the map.</string>
+	<string>Your current location will be displayed on the map and used for directions, nearby search results, and estimated travel times.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>This app uses your Microphone to allow Voice over IP communication with the Program Admin system</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>

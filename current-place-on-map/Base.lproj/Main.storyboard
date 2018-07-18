@@ -3195,20 +3195,20 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4ta-3M-Uil">
                                 <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IWB-5p-amP">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IWB-5p-amP">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rht-Jy-RbI">
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rht-Jy-RbI">
                                                 <rect key="frame" x="0.0" y="0.0" width="107" height="70"/>
                                             </stackView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="send" translatesAutoresizingMaskIntoConstraints="NO" id="mZr-jJ-NpR">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="send" translatesAutoresizingMaskIntoConstraints="NO" id="mZr-jJ-NpR">
                                                 <rect key="frame" x="107" y="0.0" width="106.5" height="70"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="70" id="9n7-B3-iZp"/>
                                                     <constraint firstAttribute="width" constant="70" id="V3g-wc-cg9"/>
                                                 </constraints>
                                             </imageView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="njV-XO-Iyy">
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="njV-XO-Iyy">
                                                 <rect key="frame" x="213.5" y="0.0" width="106.5" height="70"/>
                                             </stackView>
                                         </subviews>
@@ -3218,7 +3218,7 @@
                                             <constraint firstAttribute="width" constant="375" id="e8i-y1-dKd"/>
                                         </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="&quot;You've got mail!&quot;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRy-vb-lJn">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;You've got mail!&quot;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRy-vb-lJn">
                                         <rect key="frame" x="0.0" y="70" width="320" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="L39-wQ-KKG"/>
@@ -3227,7 +3227,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Please enable notifications so that you can get updates about messages from your friends, and more! " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyr-bi-HQk">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enable notifications so that you can get updates about messages from your friends, and more! " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyr-bi-HQk">
                                         <rect key="frame" x="0.0" y="170" width="320" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="277" id="ofu-mg-Plc"/>
